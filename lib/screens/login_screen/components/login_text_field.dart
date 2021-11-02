@@ -14,7 +14,7 @@ class LoginTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-      margin: const EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -30,7 +30,7 @@ class LoginTextField extends StatelessWidget {
         ),
         style: const TextStyle(
           fontWeight: FontWeight.w500,
-          fontSize: 16,
+          fontSize: 18,
           height: 1,
           color: Color(0xFF12519E),
         ),

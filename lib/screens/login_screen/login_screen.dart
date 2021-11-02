@@ -1,9 +1,17 @@
 import "package:flutter/material.dart";
+import 'package:iurc_mobile_app/components/base_button.dart';
 
-import 'login_text_field.dart';
+import 'components/login_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  void _login() {
+    // TODO: add login function
+    print("Login..");
+  }
+
+  void _toRegistration() {}
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +31,10 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
                 LoginTextField(
                   // labelText: "Login",
                   hintText: "Login",
@@ -36,7 +44,22 @@ class LoginScreen extends StatelessWidget {
                   hintText: "Password",
                   isHidden: true,
                 ),
-
+                BaseButton(
+                  label: "Войти",
+                  onPressed: _login,
+                ),
+                Text(
+                  "Нет аккаунта?",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                BaseButton(
+                  label: "Зарегистрироваться",
+                  onPressed: _toRegistration,
+                ),
               ],
             ),
           )
