@@ -13,7 +13,7 @@ class LoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
       margin: const EdgeInsets.only(bottom: 10),
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -21,18 +21,10 @@ class LoginTextField extends StatelessWidget {
       ),
       child: TextField(
         obscureText: isHidden,
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
           hintText: hintText,
-          border: UnderlineInputBorder(),
-          isDense: true,
-          contentPadding: const EdgeInsets.symmetric(vertical: 4),
           // TODO: add iconbutton to show hidden password
-        ),
-        style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 18,
-          height: 1,
-          color: Color(0xFF12519E),
         ),
         obscuringCharacter: '*',
       ),

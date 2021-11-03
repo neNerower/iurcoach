@@ -6,12 +6,14 @@ import 'components/login_text_field.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
-  void _login() {
+  void _login(BuildContext context) {
     // TODO: add login function
-    print("Login..");
+    Navigator.pushNamed(context, "/home");
   }
 
-  void _toRegistration() {}
+  void _toRegistration(BuildContext context) {
+    Navigator.pushNamed(context, "/registration");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,6 @@ class LoginScreen extends StatelessWidget {
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          // SvgPicture.asset("assets/images/background_login.svg"),
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -36,17 +37,15 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 LoginTextField(
-                  // labelText: "Login",
                   hintText: "Login",
                 ),
                 LoginTextField(
-                  // labelText: "Password",
                   hintText: "Password",
                   isHidden: true,
                 ),
                 BaseButton(
                   label: "Войти",
-                  onPressed: _login,
+                  onPressed: () => _login(context),
                 ),
                 Text(
                   "Нет аккаунта?",
@@ -58,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 BaseButton(
                   label: "Зарегистрироваться",
-                  onPressed: _toRegistration,
+                  onPressed: () => _toRegistration(context),
                 ),
               ],
             ),
