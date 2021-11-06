@@ -22,7 +22,7 @@ class PhoneField extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
       ],
       validator: (value) {
-        return value!.length != 10 ? "Проверьте формат номера" : null;
+        return value!.length != 10 ? "Неверный формат ввода" : null;
       },
       onSaved: onSaved,
     );
