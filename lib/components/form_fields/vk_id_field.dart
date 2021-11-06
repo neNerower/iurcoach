@@ -13,7 +13,7 @@ class VkIdField extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(labelText: "ID VK"),
       textCapitalization: TextCapitalization.none,
-      keyboardType: TextInputType.text,
+      keyboardType: TextInputType.url,
       validator: (value) {
         // Check is empty
         if (value!.isEmpty)

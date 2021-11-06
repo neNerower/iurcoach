@@ -22,7 +22,8 @@ class IsuField extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
       ],
       validator: (value) {
-        return value!.length != 6 ? "Должен содержать 6 цифр" : null;
+        if (value!.length != 6)
+          return "Должен содержать 6 цифр";
       },
       onSaved: onSaved,
     );
