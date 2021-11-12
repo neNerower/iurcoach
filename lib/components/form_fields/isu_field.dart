@@ -22,7 +22,7 @@ class IsuField extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
       ],
       validator: (value) {
-        if (value!.length != 6)
+        if (!RegExp(r"\d{3}-\d{3}").hasMatch(value!))
           return "Должен содержать 6 цифр";
       },
       onSaved: onSaved,

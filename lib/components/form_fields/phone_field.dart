@@ -26,7 +26,7 @@ class PhoneField extends StatelessWidget {
         if (value!.isEmpty)
           return "Это обязательное поле";
         // Check id format
-        if (value.length != 10)
+        if (!RegExp(r"+7 (\d{3}) \d{3}-\d{3}-\d{3}").hasMatch(value))
           return "Неверный формат ввода";
       },
       onSaved: onSaved,
