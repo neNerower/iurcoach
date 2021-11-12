@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class LoginTextField extends StatelessWidget {
   final bool isHidden;
   final String hintText;
+  // final void Function(String?) onSaved;
 
   const LoginTextField({
     Key? key,
     this.isHidden = false,
     required this.hintText,
+    // required this.onSaved,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class LoginTextField extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
-      child: TextField(
+      child: TextFormField(
         obscureText: isHidden,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
@@ -27,6 +29,7 @@ class LoginTextField extends StatelessWidget {
           // TODO: add iconbutton to show hidden password
         ),
         obscuringCharacter: '*',
+        // onSaved: onSaved,
       ),
     );
   }
