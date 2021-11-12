@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iurc_mobile_app/components/base_button.dart';
 import 'package:iurc_mobile_app/components/form_fields/email_field.dart';
 
 import 'package:iurc_mobile_app/components/form_fields/isu_field.dart';
@@ -20,6 +21,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String _phoneNumber = "";
   String _vkIdNumber = "";
   String _email = "";
+
+  void _sendRegistration(BuildContext context) {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    // TODO: send registration request
+    Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+  }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -54,6 +64,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               EmailField(
                 onSaved: (value) => _email = value!,
+              ),
+              BaseButton(
+                label: "Отправить",
+                onPressed: () => _sendRegistration(context),
               ),
             ],
           ),
