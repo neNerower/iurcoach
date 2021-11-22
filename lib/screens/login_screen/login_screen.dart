@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:iurc_mobile_app/components/base_button.dart';
+import 'package:iurc_mobile_app/components/form_fields/base_form_field.dart';
 
-import 'components/login_text_field.dart';
+import 'components/login_form_wrapper.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -49,12 +50,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   // TODO: check form fields works correct
-                  LoginTextField(
-                    hintText: "Login",
+                  LoginFormWrapper(
+                    child: BaseFormField(
+                      hintText: "Логин",
+                      onSaved: (value) => {},
+                    )
                   ),
-                  LoginTextField(
-                    hintText: "Password",
-                    isHidden: true,
+                  LoginFormWrapper(
+                    child: BaseFormField(
+                      hintText: "Пароль",
+                      isHidden: true,
+                      onSaved: (value) => {},
+                    )
                   ),
                   BaseButton(
                     label: "Войти",
