@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 class BaseFormField extends StatelessWidget {
-  final String labelText;
-  final String hintText;
+  final String? labelText;
+  final String? hintText;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   // Field data should be hidden
@@ -20,12 +20,12 @@ class BaseFormField extends StatelessWidget {
 
   const BaseFormField({
     Key? key,
-    required this.labelText,
-    this.hintText = "",
+    this.labelText,
+    this.hintText,
     this.keyboardType,
     this.textCapitalization = TextCapitalization.sentences,
     this.isHidden = false,
-    this.isRequired = false,
+    this.isRequired = true,
     this.customValidator,
     this.mask,
     this.inputFormatters,
@@ -42,17 +42,21 @@ class BaseFormField extends StatelessWidget {
       ),
       textCapitalization: textCapitalization,
       keyboardType: keyboardType,
-      controller: MaskedTextController(
-        mask: mask,
-      ),
+      controller: mask == null
+          ? null
+          : MaskedTextController(
+              mask: mask,
+            ),
       inputFormatters: inputFormatters,
       validator: (value) {
         // Check is empty
-        if (value!.isEmpty) {
+        if (value == null || value.isEmpty) {
           return isRequired ? "Это обязательное поле" : null;
         }
         // Custom checks
-        return customValidator!(value);
+        if (customValidator != null) {
+          return customValidator!(value);
+        }
       },
       obscureText: isHidden,
       obscuringCharacter: '*',

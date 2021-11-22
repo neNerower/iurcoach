@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'base_form_field.dart';
+
 class VkIdField extends StatelessWidget {
   final void Function(String?) onSaved;
 
@@ -10,17 +12,13 @@ class VkIdField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(labelText: "ID VK"),
+    return BaseFormField(
+      labelText: "ID VK",
+      hintText: "vk.com/your_id",
       textCapitalization: TextCapitalization.none,
-      keyboardType: TextInputType.url,
-      validator: (value) {
-        // Check is empty
-        if (value!.isEmpty)
-          return "Это обязательное поле";
+      customValidator: (value) {
         // Check id format
-        if (!value.startsWith("vk.com/"))
-          return "Должен начинаться с vk.com/";
+        if (!RegExp(r"^vk.com/[\w]+$").hasMatch(value)) return "Должен начинаться с vk.com/";
       },
       onSaved: onSaved,
     );

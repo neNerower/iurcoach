@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'base_form_field.dart';
+
 class EmailField extends StatelessWidget {
   final void Function(String?) onSaved;
 
@@ -10,16 +12,13 @@ class EmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(labelText: "Email"),
+    return BaseFormField(
+      labelText: "Email",
+      hintText: "my_email@example.com",
       textCapitalization: TextCapitalization.none,
-      keyboardType: TextInputType.text,
-      validator: (value) {
-        // Check is empty
-        if (value!.isEmpty)
-          return "Это обязательное поле";
-        // Check id format
-        if (!RegExp(r"[\w!#$%&'*+/=?^_`{|}~-]+@[\w]+.[\w]").hasMatch(value))
+      customValidator: (value) {
+        // Check email format
+        if (!RegExp(r"^[\w.!#$%&'*+-/=?^_`{|}~]+@[\w]+\.[a-zA-Z]+$|^$").hasMatch(value))
           return "Неверный формат ввода";
       },
       onSaved: onSaved,
