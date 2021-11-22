@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iurc_mobile_app/components/base_button.dart';
-import 'package:iurc_mobile_app/components/form_fields/email_field.dart';
 
+import 'package:iurc_mobile_app/components/form_fields/base_form_field.dart';
+import 'package:iurc_mobile_app/components/form_fields/email_field.dart';
 import 'package:iurc_mobile_app/components/form_fields/isu_field.dart';
-import 'package:iurc_mobile_app/components/form_fields/name_field.dart';
+import 'package:iurc_mobile_app/components/form_fields/password_field.dart';
 import 'package:iurc_mobile_app/components/form_fields/phone_field.dart';
 import 'package:iurc_mobile_app/components/form_fields/vk_id_field.dart';
 
@@ -39,37 +40,45 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       appBar: AppBar(
         title: Text("Регистрация"),
       ),
+      resizeToAvoidBottomInset: true,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        // TODO: extract to user_data_form
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: Form(
           key: _formKey,
-          child: Column(
-            children: [
-              NameField(
-                labelText: "Имя",
-                onSaved: (value) => _firstName = value!,
-              ),
-              NameField(
-                labelText: "Фамилия",
-                onSaved: (value) => _lastName = value!,
-              ),
-              IsuField(
-                onSaved: (value) => _isuNumber = value!,
-              ),
-              PhoneField(
-                onSaved: (value) => _phoneNumber = value!,
-              ),
-              VkIdField(
-                onSaved: (value) => _vkIdNumber = value!,
-              ),
-              EmailField(
-                onSaved: (value) => _email = value!,
-              ),
-              BaseButton(
-                label: "Отправить",
-                onPressed: () => _sendRegistration(context),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                BaseFormField(
+                  labelText: "Имя",
+                  onSaved: (value) => _firstName = value!,
+                ),
+                BaseFormField(
+                  labelText: "Фамилия",
+                  onSaved: (value) => _lastName = value!,
+                ),
+                IsuField(
+                  onSaved: (value) => _isuNumber = value!,
+                ),
+                PhoneField(
+                  onSaved: (value) => _phoneNumber = value!,
+                ),
+                VkIdField(
+                  onSaved: (value) => _vkIdNumber = value!,
+                ),
+                EmailField(
+                  onSaved: (value) => _email = value!,
+                ),
+                PasswordField(
+                  labelText: "Пароль",
+                  onSaved: (value) => {},
+                ),
+                BaseButton(
+                  label: "Отправить",
+                  onPressed: () => _sendRegistration(context),
+                ),
+              ],
+            ),
           ),
         ),
       ),
