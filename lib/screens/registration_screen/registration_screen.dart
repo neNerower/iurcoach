@@ -41,12 +41,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         title: Text("Регистрация"),
       ),
       resizeToAvoidBottomInset: true,
-      body: Padding(
-        // TODO: extract to user_data_form
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          // TODO: extract to user_data_form
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          child: Form(
+            key: _formKey,
             child: Column(
               children: [
                 BaseFormField(
