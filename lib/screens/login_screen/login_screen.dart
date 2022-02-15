@@ -17,7 +17,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _login(BuildContext context) {
     // TODO: send login request
-    Navigator.pushNamed(context, "/home");
+    Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+    // Navigator.pushNamed(context, "/home");
   }
 
   void _toRegistration(BuildContext context) {
