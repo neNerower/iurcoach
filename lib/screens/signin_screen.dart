@@ -15,10 +15,31 @@ class _SigninScreenState extends State<SigninScreen> {
 
   void _login(BuildContext context) {
     // TODO: send login request
-    Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+
+    setState(() {
+      _formKey.currentState?.save();
+    });
+
+    // Used just in debug mode
+    // To check processing data before API supported
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text(_username),
+        content: Text(_password),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false),
+            child: Text("Yes"),
+          ),
+        ],
+      ),
+    );
+
+    // Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
   }
 
-  void _toRegistration() {
+  void _toRegistration(BuildContext context) {
     Navigator.pushNamed(context, "/registration");
   }
 
@@ -52,7 +73,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     ),
                     onSaved: (val) => _password = val ?? "",
                     obscureText: true,
-                    // obscuringCharacter: '*',
+                    obscuringCharacter: '~',
                   ),
                 ),
                 Container(
@@ -78,7 +99,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     child: Text("Регистрация"),
-                    onPressed: () => _login(context),
+                    onPressed: () => _toRegistration(context),
                   ),
                 ),
               ],
