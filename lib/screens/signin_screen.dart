@@ -39,8 +39,8 @@ class _SigninScreenState extends State<SigninScreen> {
     // Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
   }
 
-  void _toRegistration(BuildContext context) {
-    Navigator.pushNamed(context, "/registration");
+  void _toSignup(BuildContext context) {
+    Navigator.pushNamed(context, "/signup");
   }
 
   @override
@@ -99,7 +99,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     child: Text("Регистрация"),
-                    onPressed: () => _toRegistration(context),
+                    onPressed: () => _toSignup(context),
                   ),
                 ),
               ],
