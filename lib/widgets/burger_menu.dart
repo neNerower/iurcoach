@@ -65,7 +65,7 @@ class _BurgerHeader extends StatelessWidget {
         currentAccountPicture: CircleAvatar(
           // TODO: load image from request not from asset
           foregroundImage: AssetImage(
-            'assets/images/tmp/avatar.jpg',
+            'assets/stub/avatar_stub.png',
           ),
         ),
       ),
