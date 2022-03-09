@@ -67,7 +67,7 @@ class _CalendarPageState extends State<CalendarPage> {
                 // Selected day decoration
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isSameDay(day, focusedDay)
+                  color: isSameDay(day, _selectedDay)
                       ? Colors.lightBlue[100]
                       : null,
                 ),
