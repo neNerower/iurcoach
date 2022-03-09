@@ -3,6 +3,7 @@ import 'package:iurc_mobile_app/pages/account_page.dart';
 import 'package:iurc_mobile_app/pages/calendar_page.dart';
 import 'package:iurc_mobile_app/pages/news_page.dart';
 import 'package:iurc_mobile_app/pages/training_page.dart';
+import 'package:iurc_mobile_app/widgets/burger_menu.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -45,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: NeverScrollableScrollPhysics(),
         children: _pages,
       ),
+      drawer: BurgerMenu(),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentPageIndex,
