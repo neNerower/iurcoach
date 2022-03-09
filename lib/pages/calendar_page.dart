@@ -3,7 +3,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
   CalendarPage({Key? key}) : super(key: key);
-  
+
   String get title => "Календарь";
 
   @override
@@ -38,21 +38,19 @@ class _CalendarPageState extends State<CalendarPage> {
           calendarFormat: CalendarFormat.month,
           startingDayOfWeek: StartingDayOfWeek.monday,
 
-          // selectedDayPredicate: (date) {
-          //   return isSameDay(_selectedDay, date);
-          // },
-          // onDaySelected: (newSelected, oldSelected) {
-          //   if (isSameDay(newSelected, oldSelected)){
-          //     setState(() {
-          //       _selectedDay = newSelected;
-          //     });
-          //   }
-          // },
+          selectedDayPredicate: (date) {
+            return isSameDay(_selectedDay, date);
+          },
+          onDaySelected: (selectedDay, focusedDay) {
+            setState(() {
+              _selectedDay = selectedDay;
+            });
+          },
 
           daysOfWeekStyle: const DaysOfWeekStyle(
             weekendStyle: TextStyle(color: Colors.red),
           ),
-          headerStyle: HeaderStyle(
+          headerStyle: const HeaderStyle(
             titleCentered: true,
             formatButtonVisible: false,
           ),
@@ -60,53 +58,52 @@ class _CalendarPageState extends State<CalendarPage> {
           calendarBuilders: CalendarBuilders(
             prioritizedBuilder: (context, day, focusedDay) {
               //TODO: get color from event status;
-              var containerColor =
-                  _events.any((element) => isSameDay(element, day))
-                      ? Colors.blue
-                      : Colors.white;
-              var isBefore = day.isBefore(focusedDay);
+              var eventColor =Colors.blue;
+              var isEvent = _events.any((element) => isSameDay(element, day));
+              var isBefore = day.isBefore(_currentDay);
               var isCurrentMonth = day.month == focusedDay.month;
 
               return Container(
-                decoration: isCurrentMonth
-                    ? BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: containerColor, width: 2),
-                        color: isBefore ? containerColor : null,
-                      )
-                    : BoxDecoration(shape: BoxShape.circle),
-                margin: EdgeInsets.all(8),
-                child: Center(
-                  child: Text(day.day.toString(),
-                      style: TextStyle(
-                        fontSize: isSameDay(day, focusedDay) ? 20 : 16,
-                        fontWeight: isSameDay(day, focusedDay)
-                            ? FontWeight.bold
-                            : FontWeight.normal,
-                        color: isCurrentMonth ? Colors.black : Colors.grey,
-                      )),
+                // Selected day decoration
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: isSameDay(day, focusedDay)
+                      ? Colors.lightBlue[100]
+                      : null,
+                ),
+                padding: const EdgeInsets.all(6),
+                margin: const EdgeInsets.all(2),
+                child: Container(
+                  // Event day decoration
+                  decoration: (isCurrentMonth & isEvent)
+                      ? BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: eventColor, width: 2),
+                          // Fill passed events
+                          color: isBefore ? eventColor : null,
+                        )
+                      : const BoxDecoration(shape: BoxShape.circle),
+                  child: Center(
+                    // Day cell data
+                    child: Text(day.day.toString(),
+                        style: TextStyle(
+                          fontSize: isSameDay(day, _currentDay) ? 20 : 16,
+                          fontWeight: isSameDay(day, _currentDay)
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                          color: isCurrentMonth ? Colors.black : Colors.grey,
+                        )),
+                  ),
                 ),
               );
             },
+            //TODO: add custom header- and dow- builders
             // headerTitleBuilder: (context, day) {
             //   return Center(
             //     child: Text(widget._monthNames[day.month-1]),
             //   );
             // },
           ),
-
-          // calendarStyle: const CalendarStyle(
-          //   weekendTextStyle: TextStyle(color: Colors.red),
-          //   todayTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          //   todayDecoration: BoxDecoration(
-          //     shape: BoxShape.circle,
-          //   ),
-          //   selectedTextStyle: ,
-          //   selectedDecoration: BoxDecoration(
-          //     color: Colors.blueGrey,
-          //     shape: BoxShape.circle,
-          //   ),
-          // ),
         ),
       ),
     );
