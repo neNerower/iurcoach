@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 
-class AccountPage extends StatefulWidget {
-  AccountPage({Key? key}) : super(key: key);
+import 'package:iurc_mobile_app/conf/mocks/mocks.dart';
+import 'package:iurc_mobile_app/models/models.dart';
+import 'package:iurc_mobile_app/widgets/widgets.dart';
+
+class AccountPage extends StatelessWidget {
+  final UserModel model = Mocks.appUser;
 
   String get title => "Account";
 
-  @override
-  State<AccountPage> createState() => _AccountPageState();
-}
+  AccountPage({
+    Key? key,
+    // required this.model,
+  }) : super(key: key);
 
-class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(widget.title),
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      child: Column(
+        children: [
+          AccountHeader(model: model),
+        ],
       ),
     );
   }
