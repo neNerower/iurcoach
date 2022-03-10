@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iurc_mobile_app/models/training_model.dart';
-import 'package:iurc_mobile_app/widgets/training_preview.dart';
+
+import 'package:iurc_mobile_app/models/models.dart';
+import 'package:iurc_mobile_app/widgets/widgets.dart';
 
 class TrainingPage extends StatefulWidget {
   TrainingPage({Key? key}) : super(key: key);

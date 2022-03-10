@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iurc_mobile_app/pages/account_page.dart';
-import 'package:iurc_mobile_app/pages/calendar_page.dart';
-import 'package:iurc_mobile_app/pages/news_page.dart';
-import 'package:iurc_mobile_app/pages/training_page.dart';
-import 'package:iurc_mobile_app/widgets/burger_menu.dart';
+
+import 'package:iurc_mobile_app/pages/pages.dart';
+import 'package:iurc_mobile_app/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
