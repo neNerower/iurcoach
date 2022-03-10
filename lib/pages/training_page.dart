@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iurc_mobile_app/conf/mocks/event_mocks.dart';
 
 import 'package:iurc_mobile_app/models/models.dart';
 import 'package:iurc_mobile_app/widgets/widgets.dart';
@@ -18,19 +19,7 @@ class _TrainingPageState extends State<TrainingPage> {
   @override
   void initState() {
     super.initState();
-    // TODO: create lasy load list veiw instead of this
-    _trainings = [
-      TrainingModel(
-        dateTime: DateTime(2022, 3, 10, 18, 00),
-        place: "Strela",
-        plan: ["Run 30`", "RP3 20x40", "Gym"],
-      ),
-      TrainingModel(
-        dateTime: DateTime(2022, 3, 11, 16, 30),
-        place: "Lomo",
-        plan: ["Concept 6km", "2x30`", "OFP"],
-      ),
-    ];
+    _trainings = EventMocks.events;
   }
 
   @override
