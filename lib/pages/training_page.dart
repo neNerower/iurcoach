@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:iurc_mobile_app/conf/mocks/event_mocks.dart';
-
-import 'package:iurc_mobile_app/models/models.dart';
-import 'package:iurc_mobile_app/widgets/widgets.dart';
+import 'package:iurc_mobile_app/conf/imports.dart';
 
 class TrainingPage extends StatefulWidget {
   TrainingPage({Key? key}) : super(key: key);
@@ -19,7 +15,7 @@ class _TrainingPageState extends State<TrainingPage> {
   @override
   void initState() {
     super.initState();
-    _trainings = EventMocks.events;
+    _trainings = Mocks.events;
   }
 
   @override

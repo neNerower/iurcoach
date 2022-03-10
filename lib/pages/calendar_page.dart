@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:iurc_mobile_app/conf/mocks/event_mocks.dart';
-import 'package:iurc_mobile_app/models/training_model.dart';
-import 'package:iurc_mobile_app/widgets/training_preview.dart';
+import 'package:iurc_mobile_app/conf/imports.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
@@ -21,7 +18,7 @@ class _CalendarPageState extends State<CalendarPage> {
   void initState() {
     super.initState();
 
-    for (var event in EventMocks.events) {
+    for (var event in Mocks.events) {
       _events[DateTime(
         event.dateTime.year,
         event.dateTime.month,
@@ -105,6 +102,7 @@ class _CalendarPageState extends State<CalendarPage> {
               );
             },
             //TODO: add custom header- and dow- builders
+
             // headerTitleBuilder: (context, day) {
             //   return Center(
             //     child: Text(widget._monthNames[day.month-1]),
@@ -118,7 +116,7 @@ class _CalendarPageState extends State<CalendarPage> {
           endIndent: 20,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: _isEventDay(_selectedDay)
               ? TrainingPreview(
                   model: _events[DateTime(

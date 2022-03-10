@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
-import 'package:iurc_mobile_app/conf/mocks/mocks.dart';
-import 'package:iurc_mobile_app/models/models.dart';
-import 'package:iurc_mobile_app/widgets/widgets.dart';
+import 'package:iurc_mobile_app/conf/imports.dart';
 
 class AccountPage extends StatelessWidget {
   final UserModel model = Mocks.appUser;
