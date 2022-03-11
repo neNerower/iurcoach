@@ -29,7 +29,8 @@ class _SigninScreenState extends State<SigninScreen> {
         content: Text(_password),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false),
+            onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                context, "/home", (route) => false),
             child: Text("Yes"),
           ),
         ],
@@ -58,16 +59,16 @@ class _SigninScreenState extends State<SigninScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                _wrapFormField(
-                  TextFormField(
+                _FormFieldWrapper(
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: "Username",
                     ),
                     onSaved: (val) => _username = val ?? "",
                   ),
                 ),
-                _wrapFormField(
-                  TextFormField(
+                _FormFieldWrapper(
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: "Password",
                     ),
@@ -111,27 +112,23 @@ class _SigninScreenState extends State<SigninScreen> {
   }
 }
 
-// Widget _getFormField({
-//   String? labelText,
-//   String? hintText,
-// }) {
-//   return TextFormField(
-//     decoration: InputDecoration(
-//       labelText: labelText,
-//       hintText: hintText,
-//     ),
-//   );
-// }
 
-Widget _wrapFormField(FormField child) {
-  return Container(
-    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 3),
-    margin: const EdgeInsets.only(bottom: 10),
-    height: 40,
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(5)),
-    ),
-    child: child,
-  );
+class _FormFieldWrapper extends StatelessWidget {
+  final FormField child;
+
+  const _FormFieldWrapper({Key? key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 15, right: 15, bottom: 3),
+      margin: const EdgeInsets.only(bottom: 10),
+      height: 40,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+      ),
+      child: child,
+    );
+  }
 }
