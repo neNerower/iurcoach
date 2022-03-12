@@ -1,4 +1,5 @@
 class TrainingModel {
+  final int id;
   DateTime dateTime;
   String place;
   String? trainingType;
@@ -7,6 +8,7 @@ class TrainingModel {
   List<int> visitors = [];
 
   TrainingModel({
+    required this.id,
     required this.dateTime,
     required this.place,
     this.trainingType,

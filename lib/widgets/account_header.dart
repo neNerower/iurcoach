@@ -12,7 +12,7 @@ class AccountHeader extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: NetworkImage(model.photoURL ?? ""),
-          radius: 30,
+          radius: 35,
         ),
         SizedBox(width: 15),
         Column(

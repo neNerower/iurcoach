@@ -8,6 +8,7 @@ class UserModel {
   String? phoneNumber;
   String? email;
   String? photoURL;
+  List<int> trainings = [];
 
   UserModel({
     required this.firstName,
@@ -19,5 +20,6 @@ class UserModel {
     this.phoneNumber,
     this.email,
     this.photoURL,
+    required this.trainings,
   });
 }
