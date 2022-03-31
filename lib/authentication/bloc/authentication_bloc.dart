@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 
 import '../models/models.dart';
 import '../repositories/repositories.dart';
@@ -13,53 +12,51 @@ class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final AuthenticationRepository _authenticationRepository;
   final CredentialsRepository _credentialsRepository;
-  late StreamSubscription<AuthenticationStatus>
-      _authenticationStatusSubscription;
 
   AuthenticationBloc({
     required AuthenticationRepository authenticationRepository,
     required CredentialsRepository credentialsRepository,
   })  : _authenticationRepository = authenticationRepository,
         _credentialsRepository = credentialsRepository,
-        super(AuthenticationState.unknown()) {
-    on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
+        super(AuthenticationInitial()) {
+    on<AuthenticationInitialazed>(_onAuthenticationInitialazed);
+    on<AuthenticationLoginRequested>(_onAuthenticationLoginRequested);
     on<AuthenticationLogoutRequested>(_onAuthenticationLogoutRequested);
-    _authenticationStatusSubscription = _authenticationRepository.status
-        .listen((status) => add(AuthenticationStatusChanged(status)));
   }
 
-  @override
-  Future<void> close() {
-    _authenticationStatusSubscription.cancel();
-    _authenticationRepository.dispose();
-    return super.close();
-  }
-
-  void _onAuthenticationStatusChanged(
-    AuthenticationStatusChanged event,
+  void _onAuthenticationInitialazed(
+    AuthenticationInitialazed event,
     Emitter<AuthenticationState> emit,
   ) async {
-    switch (event.status) {
-      case AuthenticationStatus.unauthenticated:
-        return emit(AuthenticationState.unauthenticated());
-      case AuthenticationStatus.authenticated:
-        final credentials = await _tryGetCredentials();
-        return emit(credentials != null
-            ? AuthenticationState.authenticated(credentials)
-            : const AuthenticationState.unauthenticated());
-      default:
-        final credentials = await _tryGetCredentials();
-          return emit(credentials != null
-              ? AuthenticationState.authenticated(credentials)
-              : const AuthenticationState.unknown());
+    final credentials = await _tryGetCredentials();
+
+    return emit(credentials != null
+        ? AuthenticationSuccess(credentials)
+        : AuthenticationInProgress());
+  }
+
+  void _onAuthenticationLoginRequested(
+    AuthenticationLoginRequested event,
+    Emitter<AuthenticationState> emit,
+  ) async {
+    try {
+      _authenticationRepository.logIn(username: event.login, password: event.password);
+      final credentials = await _tryGetCredentials();
+      return emit(AuthenticationSuccess(credentials!));
+      
+    } on AuthenticationException catch (e) {
+      return emit(AuthenticationFailure(e.message));
+    } catch (e) {
+      return emit(AuthenticationFailure("Unknown exception !"));
     }
   }
 
   void _onAuthenticationLogoutRequested(
     AuthenticationLogoutRequested event,
     Emitter<AuthenticationState> emit,
-  ) {
-    _authenticationRepository.logOut();
+  ) async {
+    await _authenticationRepository.logOut();
+    return emit(AuthenticationInProgress());
   }
 
   Future<Credentials?> _tryGetCredentials() async {
