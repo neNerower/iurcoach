@@ -6,8 +6,6 @@ class Credentials extends Equatable {
 
   const Credentials(this.accessToken, this.refreshToken);
 
-  static const empty = Credentials("", "");
-
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [accessToken, refreshToken];
 }
