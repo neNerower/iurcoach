@@ -7,9 +7,9 @@ class AuthenticationInitial extends AuthenticationState {}
 class AuthenticationInProgress extends AuthenticationState {}
 
 class AuthenticationSuccess extends AuthenticationState {
-  final Credentials credentials;
+  final Tokens tokens;
 
-  AuthenticationSuccess(this.credentials);
+  AuthenticationSuccess(this.tokens);
 }
 
 class AuthenticationFailure extends AuthenticationState {

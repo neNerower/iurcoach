@@ -11,13 +11,13 @@ part 'authentication_state.dart';
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final AuthenticationRepository _authenticationRepository;
-  final CredentialsRepository _credentialsRepository;
+  final TokensRepository _tokensRepository;
 
   AuthenticationBloc({
     required AuthenticationRepository authenticationRepository,
-    required CredentialsRepository credentialsRepository,
+    required TokensRepository tokensRepository,
   })  : _authenticationRepository = authenticationRepository,
-        _credentialsRepository = credentialsRepository,
+        _tokensRepository = tokensRepository,
         super(AuthenticationInitial()) {
     on<AuthenticationInitialazed>(_onAuthenticationInitialazed);
     on<AuthenticationLoginRequested>(_onAuthenticationLoginRequested);
@@ -28,10 +28,10 @@ class AuthenticationBloc
     AuthenticationInitialazed event,
     Emitter<AuthenticationState> emit,
   ) async {
-    final credentials = await _tryGetCredentials();
+    final tokens = await _tryGetTokens();
 
-    return emit(credentials != null
-        ? AuthenticationSuccess(credentials)
+    return emit(tokens != null
+        ? AuthenticationSuccess(tokens)
         : AuthenticationInProgress());
   }
 
@@ -41,8 +41,8 @@ class AuthenticationBloc
   ) async {
     try {
       _authenticationRepository.logIn(username: event.login, password: event.password);
-      final credentials = await _tryGetCredentials();
-      return emit(AuthenticationSuccess(credentials!));
+      final tokens = await _tryGetTokens();
+      return emit(AuthenticationSuccess(tokens!));
       
     } on AuthenticationException catch (e) {
       return emit(AuthenticationFailure(e.message));
@@ -59,10 +59,10 @@ class AuthenticationBloc
     return emit(AuthenticationInProgress());
   }
 
-  Future<Credentials?> _tryGetCredentials() async {
+  Future<Tokens?> _tryGetTokens() async {
     try {
-      final credentials = await _credentialsRepository.getCredentials();
-      return credentials;
+      final tokens = await _tokensRepository.getTokens();
+      return tokens;
     } catch (_) {
       return null;
     }

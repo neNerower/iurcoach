@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iurc_mobile_app/authentication/bloc/authentication_bloc.dart';
+import 'package:iurc_mobile_app/screens/screens.dart';
 
 class AuthenticationView extends StatelessWidget {
   const AuthenticationView({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class AuthenticationView extends StatelessWidget {
           default:
         }
       },
-      child: _ScreenStub(title: "Loading.."),
+      child: LoadingScreen(),
     );
   }
 }

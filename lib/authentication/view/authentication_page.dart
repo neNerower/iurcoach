@@ -6,7 +6,7 @@ import 'authentication_view.dart';
 
 class AuthenticationPage extends StatelessWidget {
   final authenticationRepository = AuthenticationRepository();
-  final credentialsRepository = CredentialsRepository();
+  final tokensRepository = TokensRepository();
 
   AuthenticationPage({Key? key}) : super(key: key);
 
@@ -17,7 +17,7 @@ class AuthenticationPage extends StatelessWidget {
       child: BlocProvider(
         create: (_) => AuthenticationBloc(
           authenticationRepository: authenticationRepository,
-          credentialsRepository: credentialsRepository,
+          tokensRepository: tokensRepository,
         )..add(AuthenticationInitialazed()),
         child: AuthenticationView(),
       ),
