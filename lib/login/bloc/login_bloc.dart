@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:iurc_mobile_app/authentication/authentication.dart';
 
-import '../models/models.dart';
+import '../login.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
