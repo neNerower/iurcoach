@@ -26,5 +26,10 @@ class LoginPasswordChanged extends LoginEvent {
 }
 
 class LoginSubmitted extends LoginEvent {
-  const LoginSubmitted(); 
+  final AuthenticationBloc bloc;
+  
+  const LoginSubmitted(this.bloc);
+
+  @override
+  List<Object> get props => [bloc];
 }
