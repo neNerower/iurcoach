@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 
 import '../models/models.dart';
 import '../repositories/repositories.dart';
@@ -18,36 +19,26 @@ class AuthenticationBloc
     required TokensRepository tokensRepository,
   })  : _authenticationRepository = authenticationRepository,
         _tokensRepository = tokensRepository,
-        super(AuthenticationInitial()) {
-    on<AuthenticationInitialazed>(_onAuthenticationInitialazed);
-    on<AuthenticationLoginRequested>(_onAuthenticationLoginRequested);
+        super(AuthenticationState.unknown()) {
+    on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     on<AuthenticationLogoutRequested>(_onAuthenticationLogoutRequested);
   }
 
-  void _onAuthenticationInitialazed(
-    AuthenticationInitialazed event,
+  void _onAuthenticationStatusChanged(
+    AuthenticationStatusChanged event,
     Emitter<AuthenticationState> emit,
   ) async {
-    final tokens = await _tryGetTokens();
-
-    return emit(tokens != null
-        ? AuthenticationSuccess(tokens)
-        : AuthenticationInProgress());
-  }
-
-  void _onAuthenticationLoginRequested(
-    AuthenticationLoginRequested event,
-    Emitter<AuthenticationState> emit,
-  ) async {
-    try {
-      _authenticationRepository.logIn(username: event.login, password: event.password);
-      final tokens = await _tryGetTokens();
-      return emit(AuthenticationSuccess(tokens!));
-      
-    } on AuthenticationException catch (e) {
-      return emit(AuthenticationFailure(e.message));
-    } catch (e) {
-      return emit(AuthenticationFailure("Unknown exception !"));
+    switch (event.status) {
+      case AuthenticationStatus.unauthenticated:
+        return emit(const AuthenticationState.unauthenticated());
+      case AuthenticationStatus.unknown:
+      case AuthenticationStatus.authenticated:
+        final tokens = await _tryGetTokens();
+        return emit(tokens != null
+            ? AuthenticationState.authenticated(tokens)
+            : const AuthenticationState.unauthenticated());
+      default:
+        return emit(const AuthenticationState.unknown());
     }
   }
 
@@ -56,7 +47,7 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) async {
     await _authenticationRepository.logOut();
-    return emit(AuthenticationInProgress());
+    return emit(AuthenticationState.unauthenticated());
   }
 
   Future<Tokens?> _tryGetTokens() async {

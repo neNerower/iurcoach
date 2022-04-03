@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iurc_mobile_app/authentication/bloc/authentication_bloc.dart';
+import 'package:iurc_mobile_app/authentication/repositories/authentication_repository.dart';
 import 'package:iurc_mobile_app/screens/screens.dart';
 
 class AuthenticationView extends StatelessWidget {
@@ -10,17 +11,8 @@ class AuthenticationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
-        switch (state.runtimeType) {
-          // case AuthenticationInitial:
-          //   // Navigator.of(context).pushNamedAndRemoveUntil("/loading", (route) => false);
-          //   Navigator.of(context).pushAndRemoveUntil(
-          //     MaterialPageRoute(
-          //       builder: (context) => _ScreenStub(title: "Loading.."),
-          //     ),
-          //     (route) => false,
-          //   );
-          //   break;
-          case AuthenticationSuccess:
+        switch (state.status) {
+          case AuthenticationStatus.authenticated:
             // Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
@@ -29,7 +21,7 @@ class AuthenticationView extends StatelessWidget {
               (route) => false,
             );
             break;
-          case AuthenticationInProgress:
+          case AuthenticationStatus.unauthenticated:
             // Navigator.of(context).pushNamedAndRemoveUntil("/login", (route) => false);
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(

@@ -18,7 +18,7 @@ class AuthenticationPage extends StatelessWidget {
         create: (_) => AuthenticationBloc(
           authenticationRepository: authenticationRepository,
           tokensRepository: tokensRepository,
-        )..add(AuthenticationInitialazed()),
+        )..add(AuthenticationStatusChanged(AuthenticationStatus.unknown)),
         child: AuthenticationView(),
       ),
     );

@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+enum AuthenticationStatus {unknown, authenticated, unauthenticated}
+
 class AuthenticationRepository {
   final _storage = FlutterSecureStorage();
 
@@ -19,9 +21,12 @@ class AuthenticationRepository {
   }) async {
     Response response = await _dio.post("/login", data: {'username': username, 'password': password});
     if (response.statusCode == 200) {
+      final String accessToken = response.data['access_token'];
+      final String refreshToken = response.data['refresh_token'];
+
       // Save jwt to secure storage
-      await _storage.write(key: 'access_token', value: response.data['access_token']);
-      await _storage.write(key: 'refresh_token', value: response.data['refresh_token']);
+      await _storage.write(key: 'access_token', value: accessToken);
+      await _storage.write(key: 'refresh_token', value: refreshToken);
     } else {
       throw AuthenticationException("Incorrect credentials !");
     }

@@ -1,19 +1,22 @@
 part of 'authentication_bloc.dart';
 
-abstract class AuthenticationState {}
-
-class AuthenticationInitial extends AuthenticationState {}
-
-class AuthenticationInProgress extends AuthenticationState {}
-
-class AuthenticationSuccess extends AuthenticationState {
+class AuthenticationState extends Equatable {
+  final AuthenticationStatus status;
   final Tokens tokens;
 
-  AuthenticationSuccess(this.tokens);
-}
+  const AuthenticationState._({
+    this.status = AuthenticationStatus.unknown,
+    this.tokens = const Tokens("", ""),
+  });
 
-class AuthenticationFailure extends AuthenticationState {
-  final String message;
+  const AuthenticationState.unknown() : this._();
 
-  AuthenticationFailure(this.message);
+  const AuthenticationState.authenticated(Tokens tokens)
+      : this._(status: AuthenticationStatus.authenticated, tokens: tokens);
+
+  const AuthenticationState.unauthenticated()
+      : this._(status: AuthenticationStatus.unauthenticated);
+
+  @override
+  List<Object?> get props => [status, tokens];
 }
