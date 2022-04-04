@@ -9,7 +9,7 @@ class AuthenticationRepository {
   final _storage = FlutterSecureStorage();
 
   final _dio = Dio(BaseOptions(
-    baseUrl: "127.0.0.1:3002",
+    baseUrl: "http://10.0.2.2:3002",
     connectTimeout: 5000,
     receiveTimeout: 3000,
   ));
