@@ -13,7 +13,7 @@ abstract class FormModel {
   String validator() {
     // TODO: Add validations
     if (value.isEmpty) {
-      return "Value is empty";
+      return "Required field";
     }
     return "";
   }

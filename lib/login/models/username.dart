@@ -6,7 +6,9 @@ class Username extends FormModel {
 
   @override
   String validator() {
-    // TODO: Add validations
+    if (!RegExp(r'^[0-9]{6}$').hasMatch(value)) {
+      return "Isu number should be 6 numbers";
+    }
     return super.validator();
   }
 }
