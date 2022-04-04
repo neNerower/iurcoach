@@ -30,7 +30,7 @@ class LoginState extends Equatable {
     );
   }
 
-  bool get isValid => username.validate().isEmpty && password.validate().isEmpty;
+  bool get isValid => username.validator().isEmpty && password.validator().isEmpty;
 
   @override
   List<Object> get props => [status, username, password];

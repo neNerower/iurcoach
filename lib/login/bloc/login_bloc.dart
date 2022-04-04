@@ -48,13 +48,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           password: state.password.value,
         );
         // Add auth bloc event
-        event.bloc.add(AuthenticationStatusChanged(AuthenticationStatus.authenticated));
+        event.bloc.add(
+            AuthenticationStatusChanged(AuthenticationStatus.authenticated));
 
         // ? Should be emitted ?
         emit(state.copyWith(status: LoginStatus.submissionSuccess));
       } catch (_) {
         emit(state.copyWith(status: LoginStatus.submissionFailure));
       }
+    } else {
+      emit(state.copyWith(
+        username: Username.value(state.username.value),
+        password: Password.value(state.password.value),
+      ));
     }
   }
 }
