@@ -23,7 +23,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final username = Username(value: event.username);
     emit(state.copyWith(
       username: username,
-      status: LoginState.validate(username, state.password),
     ));
   }
 
@@ -34,7 +33,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final password = Password(value: event.password);
     emit(state.copyWith(
       password: password,
-      status: LoginState.validate(state.username, password),
     ));
   }
 
@@ -42,7 +40,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginSubmitted event,
     Emitter<LoginState> emit,
   ) async {
-    if (state.status == LoginStatus.valid) {
+    if (state.isValid) {
       emit(state.copyWith(status: LoginStatus.submissionInProgress));
       try {
         await _authenticationRepository.logIn(

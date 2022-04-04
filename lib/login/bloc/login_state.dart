@@ -2,8 +2,6 @@ part of 'login_bloc.dart';
 
 enum LoginStatus {
   pure,
-  invalid,
-  valid,
   submissionInProgress,
   submissionSuccess,
   submissionFailure
@@ -32,11 +30,7 @@ class LoginState extends Equatable {
     );
   }
 
-  static LoginStatus validate(Username username, Password password) {
-    return username.validate() && password.validate()
-        ? LoginStatus.valid
-        : LoginStatus.invalid;
-  }
+  bool get isValid => username.validate() && password.validate();
 
   @override
   List<Object> get props => [status, username, password];
