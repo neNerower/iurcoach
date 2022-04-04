@@ -9,7 +9,7 @@ class FormFieldWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 15, right: 15, bottom: 3),
-      margin: const EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(top: 10),
       height: 40,
       decoration: const BoxDecoration(
         color: Colors.white,

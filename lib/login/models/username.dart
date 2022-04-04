@@ -1,10 +1,12 @@
-class Username {
-  final String value;
+import 'form_model.dart';
 
-  const Username({this.value = ""});
+class Username extends FormModel {
+  const Username() : super.empty();
+  const Username.value(String value) : super.value(value);
 
-  bool validate() {
+  @override
+  String validator() {
     // TODO: Add validations
-    return value.isNotEmpty;
+    return super.validator();
   }
 }

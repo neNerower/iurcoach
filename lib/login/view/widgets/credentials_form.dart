@@ -25,7 +25,9 @@ class CredentialsForm extends StatelessWidget {
               previous.username != current.username,
           builder: (context, state) {
             return Text(
-                !state.username.validate() ? "Username format error" : "");
+              state.username.validate(),
+              style: TextStyle(color: Colors.red),
+            );
           },
         ),
         FormFieldWrapper(
@@ -43,7 +45,9 @@ class CredentialsForm extends StatelessWidget {
               previous.password != current.password,
           builder: (context, state) {
             return Text(
-                !state.password.validate() ? "Password format error" : "");
+              state.password.validate(),
+              style: TextStyle(color: Colors.red),
+            );
           },
         ),
       ],

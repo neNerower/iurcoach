@@ -1,10 +1,12 @@
-class Password {
-  final String value;
+import 'form_model.dart';
 
-  const Password({this.value = ""});
+class Password extends FormModel {
+  const Password() : super.empty();
+  const Password.value(String value) : super.value(value);
 
-  bool validate() {
+  @override
+  String validator() {
     // TODO: Add validations
-    return value.isNotEmpty;
+    return super.validator();
   }
 }
