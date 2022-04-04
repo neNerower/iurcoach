@@ -22,28 +22,70 @@ class LoginView extends StatelessWidget {
           child: Form(
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _FormFieldWrapper(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: "Username",
-                    ),
-                    onSaved: (val) => context
-                        .read<LoginBloc>()
-                        .add(LoginUsernameChanged(val ?? "")),
-                  ),
+                Expanded(
+                  flex: 2,
+                  child: Container(),
                 ),
-                _FormFieldWrapper(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: "Password",
+                Column(
+                  children: [
+                    _FormFieldWrapper(
+                      child: BlocBuilder<LoginBloc, LoginState>(
+                        buildWhen: (previous, current) =>
+                            previous.username != current.username,
+                        builder: (context, state) {
+                          return TextFormField(
+                            decoration: InputDecoration(
+                              hintText: "Username",
+                              // errorText: !state.username.validate()
+                              //     ? "Username format error"
+                              //     : null,
+                            ),
+                            onChanged: (val) => context
+                                .read<LoginBloc>()
+                                .add(LoginUsernameChanged(val)),
+                          );
+                        },
+                      ),
                     ),
-                    onSaved: (val) => context
-                        .read<LoginBloc>()
-                        .add(LoginPasswordChanged(val ?? "")),
-                    obscureText: true,
-                    // obscuringCharacter: '~',
+                    _FormFieldWrapper(
+                      child: BlocBuilder<LoginBloc, LoginState>(
+                        buildWhen: (previous, current) =>
+                            previous.password != current.password,
+                        builder: (context, state) {
+                          return TextFormField(
+                            decoration: InputDecoration(
+                              hintText: "Password",
+                              // errorText: !state.password.validate()
+                              //     ? "Password format error"
+                              //     : null,
+                            ),
+                            onChanged: (val) => context
+                                .read<LoginBloc>()
+                                .add(LoginPasswordChanged(val)),
+                            obscureText: true,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Center(
+                    child: BlocBuilder<LoginBloc, LoginState>(
+                      builder: (context, state) {
+                        switch (state.status) {
+                          case LoginStatus.submissionFailure:
+                            return Text("Some error");
+                          case LoginStatus.submissionInProgress:
+                            return CircularProgressIndicator();
+
+                          default:
+                            return Container();
+                        }
+                      },
+                    ),
                   ),
                 ),
                 Container(
@@ -67,7 +109,7 @@ class LoginView extends StatelessWidget {
 }
 
 class _FormFieldWrapper extends StatelessWidget {
-  final FormField child;
+  final Widget child;
 
   const _FormFieldWrapper({Key? key, required this.child}) : super(key: key);
 
