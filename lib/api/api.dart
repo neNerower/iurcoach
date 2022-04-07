@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-// import 'package:iurc_mobile_app/authentication/repositories/tokens_repository.dart';
+
 import 'package:iurc_mobile_app/conf/globals.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
 
 class Api {
   final dio = createDio();
@@ -22,14 +23,15 @@ class Api {
 
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-        var accessToken = TokensRepository().getAccessToken();
-        options.headers['Authorization'] = 'Bearer: $accessToken';
+        // TODO: Get tokens from Auth bloc
+        var tokens = await TokensRepository().getTokens();
+        options.headers['Authorization'] = 'Bearer: ${tokens.accessToken}';
         return handler.next(options);
       },
       onError: (error, handler) async {
         if (error.response?.statusCode == 401 ||
             error.response?.statusCode == 403) {
-          await TokensRopository().refreshTokens();
+          await TokensRepository().refreshTokens();
           await _retry(error.requestOptions);
         }
         return handler.next(error);
