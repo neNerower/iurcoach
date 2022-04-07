@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:iurc_mobile_app/authentication/authentication.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
 
 import '../login.dart';
 
@@ -8,9 +9,9 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthenticationRepository _authenticationRepository;
+  final TokensRepository _tokensRepository;
 
-  LoginBloc(this._authenticationRepository) : super(LoginState()) {
+  LoginBloc(this._tokensRepository) : super(LoginState()) {
     on<LoginUsernameChanged>(_onUsernameChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSubmitted>(_onSubmitted);
@@ -43,13 +44,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (state.isValid) {
       emit(state.copyWith(status: LoginStatus.submissionInProgress));
       try {
-        await _authenticationRepository.logIn(
+        await _tokensRepository.logIn(
           username: state.username.value,
           password: state.password.value,
         );
         // Add auth bloc event
         event.bloc.add(
-            AuthenticationStatusChanged(AuthenticationStatus.authenticated));
+          AuthenticationStatusChanged(AuthenticationStatus.authenticated),
+        );
 
         // ? Should be emitted ?
         emit(state.copyWith(status: LoginStatus.submissionSuccess));

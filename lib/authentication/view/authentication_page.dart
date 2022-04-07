@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
 
 import '../authentication.dart';
 import 'authentication_view.dart';
 
 class AuthenticationPage extends StatelessWidget {
-  final _authenticationRepository = AuthenticationRepository();
   final _tokensRepository = TokensRepository();
 
   AuthenticationPage({Key? key}) : super(key: key);
@@ -13,10 +13,9 @@ class AuthenticationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
-      value: _authenticationRepository,
+      value: _tokensRepository,
       child: BlocProvider(
         create: (_) => AuthenticationBloc(
-          authenticationRepository: _authenticationRepository,
           tokensRepository: _tokensRepository,
         )..add(AuthenticationStatusChanged(AuthenticationStatus.unknown)),
         child: AuthenticationView(),

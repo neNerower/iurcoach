@@ -1,24 +1,18 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import '../models/models.dart';
-import '../repositories/repositories.dart';
+import 'package:iurc_mobile_app/models/tokens.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final AuthenticationRepository _authenticationRepository;
   final TokensRepository _tokensRepository;
 
   AuthenticationBloc({
-    required AuthenticationRepository authenticationRepository,
     required TokensRepository tokensRepository,
-  })  : _authenticationRepository = authenticationRepository,
-        _tokensRepository = tokensRepository,
+  })  : _tokensRepository = tokensRepository,
         super(AuthenticationState.unknown()) {
     on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     on<AuthenticationLogoutRequested>(_onAuthenticationLogoutRequested);
@@ -33,8 +27,8 @@ class AuthenticationBloc
         return emit(const AuthenticationState.unauthenticated());
       case AuthenticationStatus.unknown:
       case AuthenticationStatus.authenticated:
-        final tokens = await _tryGetTokens();
-        return emit(tokens != null
+        final tokens = await _tokensRepository.getTokens();
+        return emit(tokens.isEmpty
             ? AuthenticationState.authenticated(tokens)
             : const AuthenticationState.unauthenticated());
       default:
@@ -46,16 +40,7 @@ class AuthenticationBloc
     AuthenticationLogoutRequested event,
     Emitter<AuthenticationState> emit,
   ) async {
-    await _authenticationRepository.logOut();
+    await _tokensRepository.deleteTokens();
     return emit(AuthenticationState.unauthenticated());
-  }
-
-  Future<Tokens?> _tryGetTokens() async {
-    try {
-      final tokens = await _tokensRepository.getTokens();
-      return tokens;
-    } catch (_) {
-      return null;
-    }
   }
 }

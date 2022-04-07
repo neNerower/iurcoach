@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iurc_mobile_app/authentication/authentication.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
 
 import '../login.dart';
 import 'login_view.dart';
@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginBloc(context.read<AuthenticationRepository>()),
+      create: (_) => LoginBloc(context.read<TokensRepository>()),
       child: LoginView(),
     );
   }
