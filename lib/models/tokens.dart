@@ -5,6 +5,9 @@ class Tokens extends Equatable {
   final String refreshToken;
 
   const Tokens(this.accessToken, this.refreshToken);
+  const Tokens.empty() : this("", "");
+
+  bool get isEmpty => accessToken.isEmpty || refreshToken.isEmpty;
 
   @override
   List<Object?> get props => [accessToken, refreshToken];
