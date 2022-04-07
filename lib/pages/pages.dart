@@ -1,4 +1,4 @@
-export 'account_page.dart';
-export 'calendar_page.dart';
-export 'news_page.dart';
-export 'training_page.dart';
+export 'account/account_page.dart';
+export 'calendar/calendar_page.dart';
+export 'news/news_page.dart';
+export 'results/training_page.dart';
