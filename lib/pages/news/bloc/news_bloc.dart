@@ -16,7 +16,7 @@ part 'news_state.dart';
 // }
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
-  final PostsRepository _postsRepository = PostsRepository();
+  final PostRepository _postRepository = PostRepository();
 
   NewsBloc() : super(NewsState()) {
     on<NewsFetched>(
@@ -31,7 +31,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
     try {
       if (state.status == NewsStatus.initial) {
-        final posts = await _postsRepository.fetchPosts();
+        final posts = await _postRepository.fetchPosts();
         return emit(state.copyWith(
           status: NewsStatus.success,
           posts: posts,
@@ -39,7 +39,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         ));
       }
 
-      final posts = await _postsRepository.fetchPosts(shift: state.posts.length);
+      final posts = await _postRepository.fetchPosts(shift: state.posts.length);
       emit(posts.isEmpty
           ? state.copyWith(hasReachedMax: true)
           : state.copyWith(

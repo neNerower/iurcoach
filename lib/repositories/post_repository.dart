@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:iurc_mobile_app/api/api.dart';
 import 'package:iurc_mobile_app/models/models.dart';
 
-class PostsRepository {
+class PostRepository {
   final _api = Api();
 
   Future<List<Post>> fetchPosts({int shift = 0, int total = 5}) async {

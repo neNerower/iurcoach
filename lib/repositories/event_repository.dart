@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:iurc_mobile_app/api/api.dart';
 import 'package:iurc_mobile_app/models/models.dart';
 
-class EventsRepository {
+class EventRepository {
   Api _api = Api();
 
   Future<List<Event>> fetchEvents({required DateTime date}) async {
