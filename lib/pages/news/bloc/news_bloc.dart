@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:iurc_mobile_app/models/models.dart';
 import 'package:iurc_mobile_app/repositories/repositories.dart';
-
-import '../models/models.dart';
 
 part 'news_event.dart';
 part 'news_state.dart';

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:iurc_mobile_app/api/api.dart';
-import 'package:iurc_mobile_app/pages/news/models/models.dart';
+import 'package:iurc_mobile_app/models/models.dart';
 
 class PostsRepository {
   final _api = Api();
