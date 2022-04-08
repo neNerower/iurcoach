@@ -28,7 +28,7 @@ class AuthenticationBloc
       case AuthenticationStatus.unknown:
       case AuthenticationStatus.authenticated:
         final tokens = await _tokensRepository.getTokens();
-        return emit(tokens.isEmpty
+        return emit(!tokens.isEmpty
             ? AuthenticationState.authenticated(tokens)
             : const AuthenticationState.unauthenticated());
       default:
