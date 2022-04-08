@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
 
-import '../models/post.dart';
+import '../models/models.dart';
 
 part 'news_event.dart';
 part 'news_state.dart';
 
-const _postLimit = 20;
+// const _postLimit = 20;
 // const throttleDuration = Duration(milliseconds: 100);
 
 // EventTransformer<E> throttleDroppable<E>(Duration duration) {
@@ -16,6 +17,8 @@ const _postLimit = 20;
 // }
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
+  final PostsRepository _postsRepository = PostsRepository();
+
   NewsBloc() : super(NewsState()) {
     on<NewsFetched>(
       _onNewsFetched,
@@ -29,7 +32,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
     try {
       if (state.status == NewsStatus.initial) {
-        final posts = await _fetchPosts();
+        final posts = await _postsRepository.fetchPosts();
         return emit(state.copyWith(
           status: NewsStatus.success,
           posts: posts,
@@ -37,7 +40,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         ));
       }
 
-      final posts = await _fetchPosts(state.posts.length);
+      final posts = await _postsRepository.fetchPosts(shift: state.posts.length);
       emit(posts.isEmpty
           ? state.copyWith(hasReachedMax: true)
           : state.copyWith(
@@ -48,27 +51,5 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     } catch (_) {
       emit(state.copyWith(status: NewsStatus.failure));
     }
-  }
-}
-
-Future<List<Post>> _fetchPosts([int startIndex = 0]) async {
-    final response = await httpClient.get(
-      Uri.https(
-        'jsonplaceholder.typicode.com',
-        '/posts',
-        <String, String>{'_start': '$startIndex', '_limit': '$_postLimit'},
-      ),
-    );
-    if (response.statusCode == 200) {
-      final body = json.decode(response.body) as List;
-      return body.map((dynamic json) {
-        return Post(
-          id: json['id'] as int,
-          title: json['title'] as String,
-          body: json['body'] as String,
-        );
-      }).toList();
-    }
-    throw Exception('error fetching posts');
   }
 }
