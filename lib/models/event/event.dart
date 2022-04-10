@@ -5,6 +5,8 @@ part 'event.g.dart';
 
 @freezed
 class Event with _$Event {
+  const Event._();
+  
   const factory Event({
     required int id,
     required String eventTipe,
@@ -14,6 +16,9 @@ class Event with _$Event {
     // TODO: Change to list with IDs
     required int participants,
   }) = _Event;
+
+  DateTime get date =>
+      DateTime(this.dateTime.year, this.dateTime.month, this.dateTime.day);
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 }
