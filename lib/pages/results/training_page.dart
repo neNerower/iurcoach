@@ -1,4 +1,4 @@
-import 'package:iurc_mobile_app/conf/imports.dart';
+import 'package:flutter/material.dart';
 
 class TrainingPage extends StatefulWidget {
   TrainingPage({Key? key}) : super(key: key);
@@ -10,26 +10,26 @@ class TrainingPage extends StatefulWidget {
 }
 
 class _TrainingPageState extends State<TrainingPage> {
-  late List<TrainingModel> _trainings;
+  // late List<TrainingModel> _trainings;
 
   @override
   void initState() {
     super.initState();
-    _trainings = Mocks.events;
+    // _trainings = Mocks.events;
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView.builder(
-        itemCount: _trainings.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: TrainingPreview(model: _trainings[index]),
-          );
-        },
-      ),
+      // child: ListView.builder(
+      //   itemCount: _trainings.length,
+      //   itemBuilder: (context, index) {
+      //     return Padding(
+      //       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      //       child: EventPreview(model: _trainings[index]),
+      //     );
+      //   },
+      // ),
     );
   }
 }

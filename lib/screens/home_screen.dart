@@ -1,4 +1,5 @@
-import 'package:iurc_mobile_app/conf/imports.dart';
+import 'package:flutter/material.dart';
+import 'package:iurc_mobile_app/pages/pages.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: _pages,
       ),
-      drawer: BurgerMenu(),
+      // drawer: BurgerMenu(),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentPageIndex,

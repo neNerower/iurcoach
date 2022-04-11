@@ -1,4 +1,5 @@
-import 'package:iurc_mobile_app/conf/imports.dart';
+import 'package:flutter/material.dart';
+import 'package:iurc_mobile_app/models/models.dart';
 
 class AccountHeader extends StatelessWidget {
   const AccountHeader({Key? key, required this.model}) : super(key: key);
