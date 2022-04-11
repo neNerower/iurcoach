@@ -5,17 +5,18 @@ import 'package:iurc_mobile_app/models/models.dart';
 class EventRepository {
   Api _api = Api();
 
-  Future<Map<DateTime, Event>> fetchEvents({required DateTime date}) async {
+  Future<Map<DateTime, Event>> fetchEvents({required DateTime targetMonth}) async {
     Response response = await _api.dio.get(
       "/events",
-      queryParameters: {"date": "${date.year}-${date.month}-${date.day}"},
+      queryParameters: {"targetMonth": "${targetMonth.year}-${targetMonth.month}-01"},
     );
 
     final data = response.data as List;
+    List<Event> eventsList = data.map((json) => Event.fromJson(json)).toList();
 
     return Map.fromIterable(
-      data.map((json) => Event.fromJson(json)),
-      key: (e) => e.date,
+      eventsList,
+      key: (e) => DateTime(e.dateTime.year, e.dateTime.month, e.dateTime.day),
       value: (e) => e,
     );
   }

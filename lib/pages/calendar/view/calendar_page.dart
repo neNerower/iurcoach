@@ -1,4 +1,7 @@
-import 'package:iurc_mobile_app/conf/imports.dart';
+import 'package:flutter/material.dart';
+import 'package:iurc_mobile_app/models/models.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
+import 'package:iurc_mobile_app/widgets/widgets.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
@@ -10,20 +13,28 @@ class CalendarPage extends StatefulWidget {
   State<CalendarPage> createState() => _CalendarPageState();
 }
 
+//TODO: Rebuild with BLoC
+
 class _CalendarPageState extends State<CalendarPage> {
   var _selectedDay = DateTime.now();
-  final Map<DateTime, TrainingModel> _events = {};
+  Map<DateTime, Event> _events = {};
 
   @override
   void initState() {
     super.initState();
 
-    for (var event in Mocks.events) {
-      _events[DateTime(
-        event.dateTime.year,
-        event.dateTime.month,
-        event.dateTime.day,
-      )] = event;
+    initEvents();
+  }
+
+  void initEvents() async {
+    try {
+      _events = await EventRepository()
+          .fetchEvents(targetMonth: _selectedDay);
+      print("Done");
+      setState(() {});
+    } catch (_) {
+      print("Fetching events error");
+      _events = {};
     }
   }
 
@@ -43,6 +54,7 @@ class _CalendarPageState extends State<CalendarPage> {
           focusedDay: _selectedDay,
           calendarFormat: CalendarFormat.month,
           startingDayOfWeek: StartingDayOfWeek.monday,
+          rowHeight: 47,
           selectedDayPredicate: (date) {
             return isSameDay(_selectedDay, date);
           },
@@ -62,7 +74,6 @@ class _CalendarPageState extends State<CalendarPage> {
             prioritizedBuilder: (context, day, focusedDay) {
               //TODO: get color from event status;
               var eventColor = Colors.blue;
-              var isBefore = day.isBefore(_currentDay);
               var isCurrentMonth = day.month == focusedDay.month;
 
               return Container(
@@ -82,7 +93,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           shape: BoxShape.circle,
                           border: Border.all(color: eventColor, width: 2),
                           // Fill passed events
-                          color: isBefore ? eventColor : null,
+                          color: day.isBefore(_currentDay.subtract(Duration(days: 1))) ? eventColor : null,
                         )
                       : const BoxDecoration(shape: BoxShape.circle),
                   child: Center(
@@ -111,16 +122,19 @@ class _CalendarPageState extends State<CalendarPage> {
           ),
         ),
         const Divider(
-          height: 40,
+          height: 30,
           indent: 20,
           endIndent: 20,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: _isEventDay(_selectedDay)
-              ? TrainingPreview(
-                  model: _events[DateTime(
-                      _selectedDay.year, _selectedDay.month, _selectedDay.day)]!)
+              ? EventPreview(
+                  event: _events[DateTime(
+                  _selectedDay.year,
+                  _selectedDay.month,
+                  _selectedDay.day,
+                )]!)
               : Container(),
         ),
       ],
