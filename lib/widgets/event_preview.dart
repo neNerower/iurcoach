@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iurc_mobile_app/models/training_model.dart';
+import 'package:iurc_mobile_app/models/models.dart';
 
-class TrainingPreview extends StatelessWidget {
-  const TrainingPreview({Key? key, required this.model}) : super(key: key);
+class EventPreview extends StatelessWidget {
+  final Event event;
 
-  final TrainingModel model;
+  const EventPreview({Key? key, required this.event}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,14 @@ class TrainingPreview extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "${model.dateTime.day}.${model.dateTime.month}",
+                    "${event.dateTime.day}.${event.dateTime.month}",
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue[900],
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    "${model.place}, ${model.dateTime.hour}:${model.dateTime.minute} ...",
+                    "${event.place}, ${event.dateTime.hour}:${event.dateTime.minute} ...",
                     style: const TextStyle(fontSize: 16),
                   ),
                 ],
@@ -61,7 +61,7 @@ class TrainingPreview extends StatelessWidget {
               ],
             ),
             Text(
-              "Идут ${model.visitors.length} человек",
+              "${event.participants.length} идут",
               style: TextStyle(color: Colors.blue),
             ),
           ],

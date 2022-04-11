@@ -24,14 +24,14 @@ class _$EventTearOff {
 
   _Event call(
       {required int id,
-      required String eventTipe,
+      required String eventType,
       required String description,
       required DateTime dateTime,
       required String place,
-      required int participants}) {
+      required List<int> participants}) {
     return _Event(
       id: id,
-      eventTipe: eventTipe,
+      eventType: eventType,
       description: description,
       dateTime: dateTime,
       place: place,
@@ -50,12 +50,12 @@ const $Event = _$EventTearOff();
 /// @nodoc
 mixin _$Event {
   int get id => throw _privateConstructorUsedError;
-  String get eventTipe => throw _privateConstructorUsedError;
+  String get eventType => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   String get place =>
       throw _privateConstructorUsedError; // TODO: Change to list with IDs
-  int get participants => throw _privateConstructorUsedError;
+  List<int> get participants => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,11 +68,11 @@ abstract class $EventCopyWith<$Res> {
       _$EventCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      String eventTipe,
+      String eventType,
       String description,
       DateTime dateTime,
       String place,
-      int participants});
+      List<int> participants});
 }
 
 /// @nodoc
@@ -86,7 +86,7 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? eventTipe = freezed,
+    Object? eventType = freezed,
     Object? description = freezed,
     Object? dateTime = freezed,
     Object? place = freezed,
@@ -97,9 +97,9 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      eventTipe: eventTipe == freezed
-          ? _value.eventTipe
-          : eventTipe // ignore: cast_nullable_to_non_nullable
+      eventType: eventType == freezed
+          ? _value.eventType
+          : eventType // ignore: cast_nullable_to_non_nullable
               as String,
       description: description == freezed
           ? _value.description
@@ -116,7 +116,7 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
       participants: participants == freezed
           ? _value.participants
           : participants // ignore: cast_nullable_to_non_nullable
-              as int,
+              as List<int>,
     ));
   }
 }
@@ -128,11 +128,11 @@ abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      String eventTipe,
+      String eventType,
       String description,
       DateTime dateTime,
       String place,
-      int participants});
+      List<int> participants});
 }
 
 /// @nodoc
@@ -147,7 +147,7 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? eventTipe = freezed,
+    Object? eventType = freezed,
     Object? description = freezed,
     Object? dateTime = freezed,
     Object? place = freezed,
@@ -158,9 +158,9 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      eventTipe: eventTipe == freezed
-          ? _value.eventTipe
-          : eventTipe // ignore: cast_nullable_to_non_nullable
+      eventType: eventType == freezed
+          ? _value.eventType
+          : eventType // ignore: cast_nullable_to_non_nullable
               as String,
       description: description == freezed
           ? _value.description
@@ -177,22 +177,21 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
       participants: participants == freezed
           ? _value.participants
           : participants // ignore: cast_nullable_to_non_nullable
-              as int,
+              as List<int>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Event extends _Event {
+class _$_Event implements _Event {
   const _$_Event(
       {required this.id,
-      required this.eventTipe,
+      required this.eventType,
       required this.description,
       required this.dateTime,
       required this.place,
-      required this.participants})
-      : super._();
+      required this.participants});
 
   factory _$_Event.fromJson(Map<String, dynamic> json) =>
       _$$_EventFromJson(json);
@@ -200,7 +199,7 @@ class _$_Event extends _Event {
   @override
   final int id;
   @override
-  final String eventTipe;
+  final String eventType;
   @override
   final String description;
   @override
@@ -208,11 +207,11 @@ class _$_Event extends _Event {
   @override
   final String place;
   @override // TODO: Change to list with IDs
-  final int participants;
+  final List<int> participants;
 
   @override
   String toString() {
-    return 'Event(id: $id, eventTipe: $eventTipe, description: $description, dateTime: $dateTime, place: $place, participants: $participants)';
+    return 'Event(id: $id, eventType: $eventType, description: $description, dateTime: $dateTime, place: $place, participants: $participants)';
   }
 
   @override
@@ -221,7 +220,7 @@ class _$_Event extends _Event {
         (other.runtimeType == runtimeType &&
             other is _Event &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.eventTipe, eventTipe) &&
+            const DeepCollectionEquality().equals(other.eventType, eventType) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.dateTime, dateTime) &&
@@ -234,7 +233,7 @@ class _$_Event extends _Event {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(eventTipe),
+      const DeepCollectionEquality().hash(eventType),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(dateTime),
       const DeepCollectionEquality().hash(place),
@@ -251,22 +250,21 @@ class _$_Event extends _Event {
   }
 }
 
-abstract class _Event extends Event {
+abstract class _Event implements Event {
   const factory _Event(
       {required int id,
-      required String eventTipe,
+      required String eventType,
       required String description,
       required DateTime dateTime,
       required String place,
-      required int participants}) = _$_Event;
-  const _Event._() : super._();
+      required List<int> participants}) = _$_Event;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
   @override
   int get id;
   @override
-  String get eventTipe;
+  String get eventType;
   @override
   String get description;
   @override
@@ -274,7 +272,7 @@ abstract class _Event extends Event {
   @override
   String get place;
   @override // TODO: Change to list with IDs
-  int get participants;
+  List<int> get participants;
   @override
   @JsonKey(ignore: true)
   _$EventCopyWith<_Event> get copyWith => throw _privateConstructorUsedError;
