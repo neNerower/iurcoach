@@ -11,7 +11,8 @@ class PostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      color: Colors.lightBlue[50],
+      elevation: 10,
       child: Column(
         children: [
           _PostImage(imageUrl: post.imageUrl),
