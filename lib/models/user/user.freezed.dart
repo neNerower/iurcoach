@@ -27,7 +27,11 @@ class _$UserTearOff {
       required String firstName,
       required String lastName,
       required DateTime birthdate,
-      required String group,
+      double? weight,
+      double? height,
+      required String team,
+      required String faculty,
+      required String studGroup,
       required String isuID,
       required String vkID,
       required String phoneNumber,
@@ -39,7 +43,11 @@ class _$UserTearOff {
       firstName: firstName,
       lastName: lastName,
       birthdate: birthdate,
-      group: group,
+      weight: weight,
+      height: height,
+      team: team,
+      faculty: faculty,
+      studGroup: studGroup,
       isuID: isuID,
       vkID: vkID,
       phoneNumber: phoneNumber,
@@ -63,7 +71,11 @@ mixin _$User {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   DateTime get birthdate => throw _privateConstructorUsedError;
-  String get group => throw _privateConstructorUsedError;
+  double? get weight => throw _privateConstructorUsedError;
+  double? get height => throw _privateConstructorUsedError;
+  String get team => throw _privateConstructorUsedError;
+  String get faculty => throw _privateConstructorUsedError;
+  String get studGroup => throw _privateConstructorUsedError;
   String get isuID => throw _privateConstructorUsedError;
   String get vkID => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
@@ -85,7 +97,11 @@ abstract class $UserCopyWith<$Res> {
       String firstName,
       String lastName,
       DateTime birthdate,
-      String group,
+      double? weight,
+      double? height,
+      String team,
+      String faculty,
+      String studGroup,
       String isuID,
       String vkID,
       String phoneNumber,
@@ -108,7 +124,11 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? birthdate = freezed,
-    Object? group = freezed,
+    Object? weight = freezed,
+    Object? height = freezed,
+    Object? team = freezed,
+    Object? faculty = freezed,
+    Object? studGroup = freezed,
     Object? isuID = freezed,
     Object? vkID = freezed,
     Object? phoneNumber = freezed,
@@ -133,9 +153,25 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      group: group == freezed
-          ? _value.group
-          : group // ignore: cast_nullable_to_non_nullable
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double?,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as double?,
+      team: team == freezed
+          ? _value.team
+          : team // ignore: cast_nullable_to_non_nullable
+              as String,
+      faculty: faculty == freezed
+          ? _value.faculty
+          : faculty // ignore: cast_nullable_to_non_nullable
+              as String,
+      studGroup: studGroup == freezed
+          ? _value.studGroup
+          : studGroup // ignore: cast_nullable_to_non_nullable
               as String,
       isuID: isuID == freezed
           ? _value.isuID
@@ -175,7 +211,11 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String firstName,
       String lastName,
       DateTime birthdate,
-      String group,
+      double? weight,
+      double? height,
+      String team,
+      String faculty,
+      String studGroup,
       String isuID,
       String vkID,
       String phoneNumber,
@@ -199,7 +239,11 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? birthdate = freezed,
-    Object? group = freezed,
+    Object? weight = freezed,
+    Object? height = freezed,
+    Object? team = freezed,
+    Object? faculty = freezed,
+    Object? studGroup = freezed,
     Object? isuID = freezed,
     Object? vkID = freezed,
     Object? phoneNumber = freezed,
@@ -224,9 +268,25 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      group: group == freezed
-          ? _value.group
-          : group // ignore: cast_nullable_to_non_nullable
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double?,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as double?,
+      team: team == freezed
+          ? _value.team
+          : team // ignore: cast_nullable_to_non_nullable
+              as String,
+      faculty: faculty == freezed
+          ? _value.faculty
+          : faculty // ignore: cast_nullable_to_non_nullable
+              as String,
+      studGroup: studGroup == freezed
+          ? _value.studGroup
+          : studGroup // ignore: cast_nullable_to_non_nullable
               as String,
       isuID: isuID == freezed
           ? _value.isuID
@@ -264,7 +324,11 @@ class _$_User implements _User {
       required this.firstName,
       required this.lastName,
       required this.birthdate,
-      required this.group,
+      this.weight,
+      this.height,
+      required this.team,
+      required this.faculty,
+      required this.studGroup,
       required this.isuID,
       required this.vkID,
       required this.phoneNumber,
@@ -283,7 +347,15 @@ class _$_User implements _User {
   @override
   final DateTime birthdate;
   @override
-  final String group;
+  final double? weight;
+  @override
+  final double? height;
+  @override
+  final String team;
+  @override
+  final String faculty;
+  @override
+  final String studGroup;
   @override
   final String isuID;
   @override
@@ -299,7 +371,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, birthdate: $birthdate, group: $group, isuID: $isuID, vkID: $vkID, phoneNumber: $phoneNumber, email: $email, photoURL: $photoURL, results: $results)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, birthdate: $birthdate, weight: $weight, height: $height, team: $team, faculty: $faculty, studGroup: $studGroup, isuID: $isuID, vkID: $vkID, phoneNumber: $phoneNumber, email: $email, photoURL: $photoURL, results: $results)';
   }
 
   @override
@@ -311,7 +383,11 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
             const DeepCollectionEquality().equals(other.birthdate, birthdate) &&
-            const DeepCollectionEquality().equals(other.group, group) &&
+            const DeepCollectionEquality().equals(other.weight, weight) &&
+            const DeepCollectionEquality().equals(other.height, height) &&
+            const DeepCollectionEquality().equals(other.team, team) &&
+            const DeepCollectionEquality().equals(other.faculty, faculty) &&
+            const DeepCollectionEquality().equals(other.studGroup, studGroup) &&
             const DeepCollectionEquality().equals(other.isuID, isuID) &&
             const DeepCollectionEquality().equals(other.vkID, vkID) &&
             const DeepCollectionEquality()
@@ -328,7 +404,11 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(firstName),
       const DeepCollectionEquality().hash(lastName),
       const DeepCollectionEquality().hash(birthdate),
-      const DeepCollectionEquality().hash(group),
+      const DeepCollectionEquality().hash(weight),
+      const DeepCollectionEquality().hash(height),
+      const DeepCollectionEquality().hash(team),
+      const DeepCollectionEquality().hash(faculty),
+      const DeepCollectionEquality().hash(studGroup),
       const DeepCollectionEquality().hash(isuID),
       const DeepCollectionEquality().hash(vkID),
       const DeepCollectionEquality().hash(phoneNumber),
@@ -353,7 +433,11 @@ abstract class _User implements User {
       required String firstName,
       required String lastName,
       required DateTime birthdate,
-      required String group,
+      double? weight,
+      double? height,
+      required String team,
+      required String faculty,
+      required String studGroup,
       required String isuID,
       required String vkID,
       required String phoneNumber,
@@ -372,7 +456,15 @@ abstract class _User implements User {
   @override
   DateTime get birthdate;
   @override
-  String get group;
+  double? get weight;
+  @override
+  double? get height;
+  @override
+  String get team;
+  @override
+  String get faculty;
+  @override
+  String get studGroup;
   @override
   String get isuID;
   @override
