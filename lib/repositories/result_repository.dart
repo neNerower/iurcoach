@@ -6,6 +6,7 @@ class ResultRepository {
   final Api _api = Api();
 
   Future<List<Result>> fetchResults() async {
+    // TODO: Add pagination
     Response response = await _api.dio.get("/results");
 
     final data = response.data as List;

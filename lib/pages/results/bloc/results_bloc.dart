@@ -9,6 +9,7 @@ part 'results_bloc.freezed.dart';
 
 class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
   final ResultRepository _resultRepository = ResultRepository();
+  final EventRepository _eventRepository = EventRepository();
 
   ResultsBloc() : super(ResultsState.initial()) {
     on<ResultsFetched>(_onResultsFetched);
@@ -17,8 +18,14 @@ class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
   void _onResultsFetched(ResultsFetched event, Emitter<ResultsState> emit) async {
     try {
       final results = await _resultRepository.fetchResults();
+
+      Map<Event, Result> resultantEvents = {};
+      for (Result result in results) {
+        final event = await _eventRepository.fetchEvent(id: result.eventId);
+        resultantEvents[event] = result;
+      }
       
-      return emit(ResultsState.success(results: results));
+      return emit(ResultsState.success(resultantEvents: resultantEvents));
     } on Exception catch (e) {
       emit(ResultsState.failure(message: e.toString()));
     }

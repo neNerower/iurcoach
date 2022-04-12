@@ -3,7 +3,7 @@ part of 'results_bloc.dart';
 @freezed
 class ResultsState with _$ResultsState {
   const factory ResultsState.initial() = _ResultsInitial;
-  const factory ResultsState.success({required List<Result> results}) =
+  const factory ResultsState.success({required Map<Event, Result> resultantEvents}) =
       _ResultsSuccess;
   const factory ResultsState.failure(
       {@Default("Results fetching failure") String message}) = _ResultsFailure;

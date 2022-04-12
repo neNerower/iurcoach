@@ -21,12 +21,6 @@ class _$ResultsEventTearOff {
   ResultsFetched fetched() {
     return const ResultsFetched();
   }
-
-  ResultsNewCreated newCreated(Result result) {
-    return ResultsNewCreated(
-      result,
-    );
-  }
 }
 
 /// @nodoc
@@ -37,38 +31,32 @@ mixin _$ResultsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
-    required TResult Function(Result result) newCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetched,
-    TResult Function(Result result)? newCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
-    TResult Function(Result result)? newCreated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ResultsFetched value) fetched,
-    required TResult Function(ResultsNewCreated value) newCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ResultsFetched value)? fetched,
-    TResult Function(ResultsNewCreated value)? newCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ResultsFetched value)? fetched,
-    TResult Function(ResultsNewCreated value)? newCreated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +120,6 @@ class _$ResultsFetched implements ResultsFetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
-    required TResult Function(Result result) newCreated,
   }) {
     return fetched();
   }
@@ -141,7 +128,6 @@ class _$ResultsFetched implements ResultsFetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetched,
-    TResult Function(Result result)? newCreated,
   }) {
     return fetched?.call();
   }
@@ -150,7 +136,6 @@ class _$ResultsFetched implements ResultsFetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
-    TResult Function(Result result)? newCreated,
     required TResult orElse(),
   }) {
     if (fetched != null) {
@@ -163,7 +148,6 @@ class _$ResultsFetched implements ResultsFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ResultsFetched value) fetched,
-    required TResult Function(ResultsNewCreated value) newCreated,
   }) {
     return fetched(this);
   }
@@ -172,7 +156,6 @@ class _$ResultsFetched implements ResultsFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ResultsFetched value)? fetched,
-    TResult Function(ResultsNewCreated value)? newCreated,
   }) {
     return fetched?.call(this);
   }
@@ -181,7 +164,6 @@ class _$ResultsFetched implements ResultsFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ResultsFetched value)? fetched,
-    TResult Function(ResultsNewCreated value)? newCreated,
     required TResult orElse(),
   }) {
     if (fetched != null) {
@@ -196,140 +178,6 @@ abstract class ResultsFetched implements ResultsEvent {
 }
 
 /// @nodoc
-abstract class $ResultsNewCreatedCopyWith<$Res> {
-  factory $ResultsNewCreatedCopyWith(
-          ResultsNewCreated value, $Res Function(ResultsNewCreated) then) =
-      _$ResultsNewCreatedCopyWithImpl<$Res>;
-  $Res call({Result result});
-}
-
-/// @nodoc
-class _$ResultsNewCreatedCopyWithImpl<$Res>
-    extends _$ResultsEventCopyWithImpl<$Res>
-    implements $ResultsNewCreatedCopyWith<$Res> {
-  _$ResultsNewCreatedCopyWithImpl(
-      ResultsNewCreated _value, $Res Function(ResultsNewCreated) _then)
-      : super(_value, (v) => _then(v as ResultsNewCreated));
-
-  @override
-  ResultsNewCreated get _value => super._value as ResultsNewCreated;
-
-  @override
-  $Res call({
-    Object? result = freezed,
-  }) {
-    return _then(ResultsNewCreated(
-      result == freezed
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as Result,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ResultsNewCreated implements ResultsNewCreated {
-  const _$ResultsNewCreated(this.result);
-
-  @override
-  final Result result;
-
-  @override
-  String toString() {
-    return 'ResultsEvent.newCreated(result: $result)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ResultsNewCreated &&
-            const DeepCollectionEquality().equals(other.result, result));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
-
-  @JsonKey(ignore: true)
-  @override
-  $ResultsNewCreatedCopyWith<ResultsNewCreated> get copyWith =>
-      _$ResultsNewCreatedCopyWithImpl<ResultsNewCreated>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetched,
-    required TResult Function(Result result) newCreated,
-  }) {
-    return newCreated(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetched,
-    TResult Function(Result result)? newCreated,
-  }) {
-    return newCreated?.call(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetched,
-    TResult Function(Result result)? newCreated,
-    required TResult orElse(),
-  }) {
-    if (newCreated != null) {
-      return newCreated(result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResultsFetched value) fetched,
-    required TResult Function(ResultsNewCreated value) newCreated,
-  }) {
-    return newCreated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ResultsFetched value)? fetched,
-    TResult Function(ResultsNewCreated value)? newCreated,
-  }) {
-    return newCreated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultsFetched value)? fetched,
-    TResult Function(ResultsNewCreated value)? newCreated,
-    required TResult orElse(),
-  }) {
-    if (newCreated != null) {
-      return newCreated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ResultsNewCreated implements ResultsEvent {
-  const factory ResultsNewCreated(Result result) = _$ResultsNewCreated;
-
-  Result get result;
-  @JsonKey(ignore: true)
-  $ResultsNewCreatedCopyWith<ResultsNewCreated> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 class _$ResultsStateTearOff {
   const _$ResultsStateTearOff();
 
@@ -337,9 +185,9 @@ class _$ResultsStateTearOff {
     return const _ResultsInitial();
   }
 
-  _ResultsSuccess success({required List<Result> results}) {
+  _ResultsSuccess success({required Map<Event, Result> resultantEvents}) {
     return _ResultsSuccess(
-      results: results,
+      resultantEvents: resultantEvents,
     );
   }
 
@@ -358,21 +206,21 @@ mixin _$ResultsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Result> results) success,
+    required TResult Function(Map<Event, Result> resultantEvents) success,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -459,7 +307,7 @@ class _$_ResultsInitial implements _ResultsInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Result> results) success,
+    required TResult Function(Map<Event, Result> resultantEvents) success,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -469,7 +317,7 @@ class _$_ResultsInitial implements _ResultsInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
   }) {
     return initial?.call();
@@ -479,7 +327,7 @@ class _$_ResultsInitial implements _ResultsInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -533,7 +381,7 @@ abstract class _$ResultsSuccessCopyWith<$Res> {
   factory _$ResultsSuccessCopyWith(
           _ResultsSuccess value, $Res Function(_ResultsSuccess) then) =
       __$ResultsSuccessCopyWithImpl<$Res>;
-  $Res call({List<Result> results});
+  $Res call({Map<Event, Result> resultantEvents});
 }
 
 /// @nodoc
@@ -549,13 +397,13 @@ class __$ResultsSuccessCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? results = freezed,
+    Object? resultantEvents = freezed,
   }) {
     return _then(_ResultsSuccess(
-      results: results == freezed
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<Result>,
+      resultantEvents: resultantEvents == freezed
+          ? _value.resultantEvents
+          : resultantEvents // ignore: cast_nullable_to_non_nullable
+              as Map<Event, Result>,
     ));
   }
 }
@@ -563,14 +411,14 @@ class __$ResultsSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ResultsSuccess implements _ResultsSuccess {
-  const _$_ResultsSuccess({required this.results});
+  const _$_ResultsSuccess({required this.resultantEvents});
 
   @override
-  final List<Result> results;
+  final Map<Event, Result> resultantEvents;
 
   @override
   String toString() {
-    return 'ResultsState.success(results: $results)';
+    return 'ResultsState.success(resultantEvents: $resultantEvents)';
   }
 
   @override
@@ -578,12 +426,13 @@ class _$_ResultsSuccess implements _ResultsSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ResultsSuccess &&
-            const DeepCollectionEquality().equals(other.results, results));
+            const DeepCollectionEquality()
+                .equals(other.resultantEvents, resultantEvents));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(resultantEvents));
 
   @JsonKey(ignore: true)
   @override
@@ -594,32 +443,32 @@ class _$_ResultsSuccess implements _ResultsSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Result> results) success,
+    required TResult Function(Map<Event, Result> resultantEvents) success,
     required TResult Function(String message) failure,
   }) {
-    return success(results);
+    return success(resultantEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
   }) {
-    return success?.call(results);
+    return success?.call(resultantEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(results);
+      return success(resultantEvents);
     }
     return orElse();
   }
@@ -660,10 +509,10 @@ class _$_ResultsSuccess implements _ResultsSuccess {
 }
 
 abstract class _ResultsSuccess implements ResultsState {
-  const factory _ResultsSuccess({required List<Result> results}) =
+  const factory _ResultsSuccess({required Map<Event, Result> resultantEvents}) =
       _$_ResultsSuccess;
 
-  List<Result> get results;
+  Map<Event, Result> get resultantEvents;
   @JsonKey(ignore: true)
   _$ResultsSuccessCopyWith<_ResultsSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -736,7 +585,7 @@ class _$_ResultsFailure implements _ResultsFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Result> results) success,
+    required TResult Function(Map<Event, Result> resultantEvents) success,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -746,7 +595,7 @@ class _$_ResultsFailure implements _ResultsFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -756,7 +605,7 @@ class _$_ResultsFailure implements _ResultsFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Result> results)? success,
+    TResult Function(Map<Event, Result> resultantEvents)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
