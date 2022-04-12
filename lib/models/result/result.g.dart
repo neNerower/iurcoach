@@ -8,10 +8,9 @@ part of 'result.dart';
 
 _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
       id: json['id'] as int? ?? -1,
-      userId: json['userId'] as int,
+      userId: json['userId'] as int? ?? -1,
       eventId: json['eventId'] as int,
       comment: json['comment'] as String? ?? "",
-      date: DateTime.parse(json['date'] as String),
       photos: (json['photos'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -23,6 +22,5 @@ Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
       'userId': instance.userId,
       'eventId': instance.eventId,
       'comment': instance.comment,
-      'date': instance.date.toIso8601String(),
       'photos': instance.photos,
     };

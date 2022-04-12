@@ -24,17 +24,15 @@ class _$ResultTearOff {
 
   _Result call(
       {int id = -1,
-      required int userId,
+      int userId = -1,
       required int eventId,
       String comment = "",
-      required DateTime date,
       List<String> photos = const <String>[]}) {
     return _Result(
       id: id,
       userId: userId,
       eventId: eventId,
       comment: comment,
-      date: date,
       photos: photos,
     );
   }
@@ -53,7 +51,6 @@ mixin _$Result {
   int get userId => throw _privateConstructorUsedError;
   int get eventId => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
   List<String> get photos => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -66,12 +63,7 @@ abstract class $ResultCopyWith<$Res> {
   factory $ResultCopyWith(Result value, $Res Function(Result) then) =
       _$ResultCopyWithImpl<$Res>;
   $Res call(
-      {int id,
-      int userId,
-      int eventId,
-      String comment,
-      DateTime date,
-      List<String> photos});
+      {int id, int userId, int eventId, String comment, List<String> photos});
 }
 
 /// @nodoc
@@ -88,7 +80,6 @@ class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
     Object? userId = freezed,
     Object? eventId = freezed,
     Object? comment = freezed,
-    Object? date = freezed,
     Object? photos = freezed,
   }) {
     return _then(_value.copyWith(
@@ -108,10 +99,6 @@ class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -126,12 +113,7 @@ abstract class _$ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
       __$ResultCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int id,
-      int userId,
-      int eventId,
-      String comment,
-      DateTime date,
-      List<String> photos});
+      {int id, int userId, int eventId, String comment, List<String> photos});
 }
 
 /// @nodoc
@@ -149,7 +131,6 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? eventId = freezed,
     Object? comment = freezed,
-    Object? date = freezed,
     Object? photos = freezed,
   }) {
     return _then(_Result(
@@ -169,10 +150,6 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -186,10 +163,9 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
 class _$_Result implements _Result {
   const _$_Result(
       {this.id = -1,
-      required this.userId,
+      this.userId = -1,
       required this.eventId,
       this.comment = "",
-      required this.date,
       this.photos = const <String>[]});
 
   factory _$_Result.fromJson(Map<String, dynamic> json) =>
@@ -198,6 +174,7 @@ class _$_Result implements _Result {
   @JsonKey()
   @override
   final int id;
+  @JsonKey()
   @override
   final int userId;
   @override
@@ -205,15 +182,13 @@ class _$_Result implements _Result {
   @JsonKey()
   @override
   final String comment;
-  @override
-  final DateTime date;
   @JsonKey()
   @override
   final List<String> photos;
 
   @override
   String toString() {
-    return 'Result(id: $id, userId: $userId, eventId: $eventId, comment: $comment, date: $date, photos: $photos)';
+    return 'Result(id: $id, userId: $userId, eventId: $eventId, comment: $comment, photos: $photos)';
   }
 
   @override
@@ -225,7 +200,6 @@ class _$_Result implements _Result {
             const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.eventId, eventId) &&
             const DeepCollectionEquality().equals(other.comment, comment) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.photos, photos));
   }
 
@@ -236,7 +210,6 @@ class _$_Result implements _Result {
       const DeepCollectionEquality().hash(userId),
       const DeepCollectionEquality().hash(eventId),
       const DeepCollectionEquality().hash(comment),
-      const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(photos));
 
   @JsonKey(ignore: true)
@@ -253,10 +226,9 @@ class _$_Result implements _Result {
 abstract class _Result implements Result {
   const factory _Result(
       {int id,
-      required int userId,
+      int userId,
       required int eventId,
       String comment,
-      required DateTime date,
       List<String> photos}) = _$_Result;
 
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
@@ -269,8 +241,6 @@ abstract class _Result implements Result {
   int get eventId;
   @override
   String get comment;
-  @override
-  DateTime get date;
   @override
   List<String> get photos;
   @override
