@@ -18,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    _pageTitles = ["Календарь", "Тренировки", "Новости", "Мой аккаунт"];
-    _pages = [CalendarPage(), TrainingPage(), NewsPage(), AccountPage()];
+    _pageTitles = ["Календарь", "Результаты", "Новости", "Мой аккаунт"];
+    _pages = [CalendarPage(), ResultsPage(), NewsPage(), AccountPage()];
 
     _currentPageIndex = 2;
     _pageController = PageController(initialPage: _currentPageIndex);
