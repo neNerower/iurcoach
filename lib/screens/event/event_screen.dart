@@ -152,9 +152,12 @@ class CardWrapper extends StatelessWidget {
   }
 }
 
+enum _GoingStatus { unknown, go, pass, disable}
+
 class _VoiteButtons extends StatelessWidget {
   final int amount;
-  const _VoiteButtons({Key? key, required this.amount}) : super(key: key);
+  final _GoingStatus status;
+  const _VoiteButtons({Key? key, required this.amount, this.status = _GoingStatus.unknown}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
