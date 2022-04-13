@@ -18,18 +18,18 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AccountStateTearOff {
   const _$AccountStateTearOff();
 
-  Initial initial() {
-    return const Initial();
+  AccountInitial initial() {
+    return const AccountInitial();
   }
 
-  Data call({required User user}) {
-    return Data(
+  AccountData data({required User user}) {
+    return AccountData(
       user: user,
     );
   }
 
-  Failure failure({String? message}) {
-    return Failure(
+  AccountFailure failure({String? message}) {
+    return AccountFailure(
       message: message,
     );
   }
@@ -41,46 +41,46 @@ const $AccountState = _$AccountStateTearOff();
 /// @nodoc
 mixin _$AccountState {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(User user) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) data,
     required TResult Function(String? message) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Failure value) failure,
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountInitial value) initial,
+    required TResult Function(AccountData value) data,
+    required TResult Function(AccountFailure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,25 +103,28 @@ class _$AccountStateCopyWithImpl<$Res> implements $AccountStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+abstract class $AccountInitialCopyWith<$Res> {
+  factory $AccountInitialCopyWith(
+          AccountInitial value, $Res Function(AccountInitial) then) =
+      _$AccountInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class _$AccountInitialCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res>
+    implements $AccountInitialCopyWith<$Res> {
+  _$AccountInitialCopyWithImpl(
+      AccountInitial _value, $Res Function(AccountInitial) _then)
+      : super(_value, (v) => _then(v as AccountInitial));
 
   @override
-  Initial get _value => super._value as Initial;
+  AccountInitial get _value => super._value as AccountInitial;
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$AccountInitial implements AccountInitial {
+  const _$AccountInitial();
 
   @override
   String toString() {
@@ -131,7 +134,7 @@ class _$Initial implements Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Initial);
+        (other.runtimeType == runtimeType && other is AccountInitial);
   }
 
   @override
@@ -139,9 +142,9 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(User user) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) data,
     required TResult Function(String? message) failure,
   }) {
     return initial();
@@ -149,9 +152,9 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
   }) {
     return initial?.call();
@@ -159,9 +162,9 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
     required TResult orElse(),
   }) {
@@ -173,30 +176,30 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Failure value) failure,
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountInitial value) initial,
+    required TResult Function(AccountData value) data,
+    required TResult Function(AccountFailure value) failure,
   }) {
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
   }) {
     return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -206,33 +209,35 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements AccountState {
-  const factory Initial() = _$Initial;
+abstract class AccountInitial implements AccountState {
+  const factory AccountInitial() = _$AccountInitial;
 }
 
 /// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res>;
+abstract class $AccountDataCopyWith<$Res> {
+  factory $AccountDataCopyWith(
+          AccountData value, $Res Function(AccountData) then) =
+      _$AccountDataCopyWithImpl<$Res>;
   $Res call({User user});
 
   $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class _$DataCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(Data _value, $Res Function(Data) _then)
-      : super(_value, (v) => _then(v as Data));
+class _$AccountDataCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res>
+    implements $AccountDataCopyWith<$Res> {
+  _$AccountDataCopyWithImpl(
+      AccountData _value, $Res Function(AccountData) _then)
+      : super(_value, (v) => _then(v as AccountData));
 
   @override
-  Data get _value => super._value as Data;
+  AccountData get _value => super._value as AccountData;
 
   @override
   $Res call({
     Object? user = freezed,
   }) {
-    return _then(Data(
+    return _then(AccountData(
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -250,22 +255,22 @@ class _$DataCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Data implements Data {
-  const _$Data({required this.user});
+class _$AccountData implements AccountData {
+  const _$AccountData({required this.user});
 
   @override
   final User user;
 
   @override
   String toString() {
-    return 'AccountState(user: $user)';
+    return 'AccountState.data(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Data &&
+            other is AccountData &&
             const DeepCollectionEquality().equals(other.user, user));
   }
 
@@ -275,107 +280,111 @@ class _$Data implements Data {
 
   @JsonKey(ignore: true)
   @override
-  $DataCopyWith<Data> get copyWith =>
-      _$DataCopyWithImpl<Data>(this, _$identity);
+  $AccountDataCopyWith<AccountData> get copyWith =>
+      _$AccountDataCopyWithImpl<AccountData>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(User user) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) data,
     required TResult Function(String? message) failure,
   }) {
-    return $default(user);
+    return data(user);
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
   }) {
-    return $default?.call(user);
+    return data?.call(user);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
     required TResult orElse(),
   }) {
-    if ($default != null) {
-      return $default(user);
+    if (data != null) {
+      return data(user);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Failure value) failure,
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountInitial value) initial,
+    required TResult Function(AccountData value) data,
+    required TResult Function(AccountFailure value) failure,
   }) {
-    return $default(this);
+    return data(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
   }) {
-    return $default?.call(this);
+    return data?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
     required TResult orElse(),
   }) {
-    if ($default != null) {
-      return $default(this);
+    if (data != null) {
+      return data(this);
     }
     return orElse();
   }
 }
 
-abstract class Data implements AccountState {
-  const factory Data({required User user}) = _$Data;
+abstract class AccountData implements AccountState {
+  const factory AccountData({required User user}) = _$AccountData;
 
   User get user;
   @JsonKey(ignore: true)
-  $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
+  $AccountDataCopyWith<AccountData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FailureCopyWith<$Res> {
-  factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
-      _$FailureCopyWithImpl<$Res>;
+abstract class $AccountFailureCopyWith<$Res> {
+  factory $AccountFailureCopyWith(
+          AccountFailure value, $Res Function(AccountFailure) then) =
+      _$AccountFailureCopyWithImpl<$Res>;
   $Res call({String? message});
 }
 
 /// @nodoc
-class _$FailureCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res>
-    implements $FailureCopyWith<$Res> {
-  _$FailureCopyWithImpl(Failure _value, $Res Function(Failure) _then)
-      : super(_value, (v) => _then(v as Failure));
+class _$AccountFailureCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res>
+    implements $AccountFailureCopyWith<$Res> {
+  _$AccountFailureCopyWithImpl(
+      AccountFailure _value, $Res Function(AccountFailure) _then)
+      : super(_value, (v) => _then(v as AccountFailure));
 
   @override
-  Failure get _value => super._value as Failure;
+  AccountFailure get _value => super._value as AccountFailure;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(Failure(
+    return _then(AccountFailure(
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -386,8 +395,8 @@ class _$FailureCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Failure implements Failure {
-  const _$Failure({this.message});
+class _$AccountFailure implements AccountFailure {
+  const _$AccountFailure({this.message});
 
   @override
   final String? message;
@@ -401,7 +410,7 @@ class _$Failure implements Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Failure &&
+            other is AccountFailure &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
@@ -411,14 +420,14 @@ class _$Failure implements Failure {
 
   @JsonKey(ignore: true)
   @override
-  $FailureCopyWith<Failure> get copyWith =>
-      _$FailureCopyWithImpl<Failure>(this, _$identity);
+  $AccountFailureCopyWith<AccountFailure> get copyWith =>
+      _$AccountFailureCopyWithImpl<AccountFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(User user) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) data,
     required TResult Function(String? message) failure,
   }) {
     return failure(message);
@@ -426,9 +435,9 @@ class _$Failure implements Failure {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
   }) {
     return failure?.call(message);
@@ -436,9 +445,9 @@ class _$Failure implements Failure {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User user)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? data,
     TResult Function(String? message)? failure,
     required TResult orElse(),
   }) {
@@ -450,30 +459,30 @@ class _$Failure implements Failure {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Failure value) failure,
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountInitial value) initial,
+    required TResult Function(AccountData value) data,
+    required TResult Function(AccountFailure value) failure,
   }) {
     return failure(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
   }) {
     return failure?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Failure value)? failure,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountData value)? data,
+    TResult Function(AccountFailure value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -483,10 +492,11 @@ class _$Failure implements Failure {
   }
 }
 
-abstract class Failure implements AccountState {
-  const factory Failure({String? message}) = _$Failure;
+abstract class AccountFailure implements AccountState {
+  const factory AccountFailure({String? message}) = _$AccountFailure;
 
   String? get message;
   @JsonKey(ignore: true)
-  $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
+  $AccountFailureCopyWith<AccountFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }

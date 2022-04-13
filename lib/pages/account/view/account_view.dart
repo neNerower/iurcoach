@@ -14,7 +14,7 @@ class AccountView extends StatelessWidget {
       child: BlocBuilder<AccountCubit, AccountState>(
         builder: (context, state) {
           return state.when(
-            (user) => Column(
+            data: (user) => Column(
               children: [
                 AccountHeader(user: user),
                 // TrainingCounter(amount: model.trainings.length),

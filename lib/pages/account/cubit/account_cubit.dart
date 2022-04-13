@@ -13,7 +13,7 @@ class AccountCubit extends Cubit<AccountState> {
   void fetchAccountData() async {
     try {
       final user = await _userRepository.fetchAccountUser();
-      emit(AccountState(user: user));
+      emit(AccountState.data(user: user));
     } catch (_) {
       emit(AccountState.failure());
     }
