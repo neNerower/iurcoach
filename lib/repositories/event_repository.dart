@@ -29,4 +29,10 @@ class EventRepository {
 
     return Event.fromJson(response.data);
   }
+
+  Future<Event> updateEvent({required Event event}) async {
+    Response response = await _api.dio.patch("events/${event.id}");
+    
+    return Event.fromJson(response.data);
+  }
 }

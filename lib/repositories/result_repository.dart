@@ -13,7 +13,8 @@ class ResultRepository {
     return data.map((json) => Result.fromJson(json)).toList();
   }
 
-  Future<Result> fetchResult({required String eventId}) async {
+  Future<Result> fetchResult({required int eventId}) async {
+    // TODO: Handle notFoundError
     Response response = await _api.dio.get("/results/$eventId");
 
     return Result.fromJson(response.data);
