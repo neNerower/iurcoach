@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iurc_mobile_app/conf/globals.dart';
 import 'package:iurc_mobile_app/models/models.dart';
-import 'package:iurc_mobile_app/screens/event_screen.dart';
+import 'package:iurc_mobile_app/screens/screens.dart';
 
 import 'event_icon.dart';
 
