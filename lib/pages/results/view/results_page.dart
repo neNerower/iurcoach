@@ -9,8 +9,8 @@ class ResultsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ResultsBloc>(
-      create: (context) => ResultsBloc()..add(ResultsEvent.fetched()),
+    return BlocProvider<ResultantBloc>(
+      create: (context) => ResultantBloc()..add(ResultantEvent.fetched()),
       child: ResultsView(),
     );
   }

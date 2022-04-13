@@ -1,2 +1,2 @@
-export 'bloc/results_bloc.dart';
+export 'bloc/resultant_bloc.dart';
 export 'view/results_page.dart';
