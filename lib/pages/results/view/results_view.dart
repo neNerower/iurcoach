@@ -38,7 +38,7 @@ class ResultsView extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                  child: EventPreview(event: events[index]),
+                  child: EventPreview(event: events[index], result: resultantEvents[events[index]],),
                 );
               },
             );

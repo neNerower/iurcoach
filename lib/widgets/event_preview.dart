@@ -7,15 +7,16 @@ import 'event_icon.dart';
 
 class EventPreview extends StatelessWidget {
   final Event event;
+  final Result? result;
 
-  const EventPreview({Key? key, required this.event}) : super(key: key);
+  const EventPreview({Key? key, required this.event, this.result}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(builder: (context) {
-          return EventScreen(event: event);
+          return EventScreen(event: event, result: result);
         }),
       ),
       child: Card(
