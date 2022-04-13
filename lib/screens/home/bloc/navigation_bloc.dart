@@ -12,6 +12,15 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
   }
 
   void _onNavigatedTo(NavigationPageChanged event, Emitter<NavigationState> emit) {
-    emit(NavigationState(pageIndex: event.pageIndex));
+    switch (event.pageIndex) {
+      case 0:
+        return emit(NavigationState.calendar());
+      case 1:
+        return emit(NavigationState.results());
+      case 2:
+        return emit(NavigationState.news());
+      case 3:
+        return emit(NavigationState.account());
+    }
   }
 }

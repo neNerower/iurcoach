@@ -13,6 +13,8 @@ class Strings {
   static const List<String> monthRNames = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
 
   static const Map<String, String> eventTypes = {"cardio": "Кардио", "speed": "Скоростная", "power": "Силовая", "competition": "Соревнования"};
+
+  static const List<String> pageTitles = ["Календарь", "Результаты", "Новости", "Мой аккаунт"];
 }
 
 class Palette {
