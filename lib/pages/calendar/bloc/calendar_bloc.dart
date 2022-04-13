@@ -1,31 +1,31 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:iurc_mobile_app/models/models.dart';
-import 'package:iurc_mobile_app/repositories/event_repository.dart';
+import 'package:iurc_mobile_app/repositories/repositories.dart';
 
-part 'event_event.dart';
-part 'event_state.dart';
+part 'calendar_event.dart';
+part 'calendar_state.dart';
 
-class EventBloc extends Bloc<EventEvent, EventState> {
+class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   final EventRepository _eventRepository = EventRepository();
 
-  EventBloc()
-      : super(EventState(
+  CalendarBloc()
+      : super(CalendarState(
             currentDay: DateTime.now(), selectedDay: DateTime.now())) {
-    on<EventsFetched>(_onEventsFetched);
+    on<CalendarEventsFetched>(_onEventsFetched);
   }
 
   Future<void> _onEventsFetched(
-      EventsFetched event, Emitter<EventState> emit) async {
+      CalendarEventsFetched event, Emitter<CalendarState> emit) async {
     try {
       final events = await _eventRepository.fetchEvents(targetMonth: event.targetMonth);
       return emit(state.copyWith(
-        status: EventStatus.success,
+        status: CalendarStatus.success,
         events: events, // TODO: Add new events except of overriding
       ));
     } catch (_) {
       emit(state.copyWith(
-        status: EventStatus.failure,
+        status: CalendarStatus.failure,
         events: {},
       ));
     }

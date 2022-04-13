@@ -6,7 +6,7 @@ import '../home.dart';
 import 'home_screen_view.dart';
 
 class HomeScreen extends StatelessWidget {
-  final EventBloc eventBloc = EventBloc();
+  final CalendarBloc calendarBloc = CalendarBloc();
   final NewsBloc newsBloc = NewsBloc();
   final AccountCubit accountCubit = AccountCubit();
 
@@ -18,12 +18,12 @@ class HomeScreen extends StatelessWidget {
       providers: [
         BlocProvider<NavigationBloc>(
           create: (context) => NavigationBloc(
-            eventBloc: eventBloc,
+            calendarBloc: calendarBloc,
             newsBloc: newsBloc,
             accountCubit: accountCubit,
           ),
         ),
-        BlocProvider.value(value: eventBloc),
+        BlocProvider.value(value: calendarBloc),
         BlocProvider.value(value: newsBloc),
         BlocProvider.value(value: accountCubit),
         // BlocProvider<ResultsBloc>(create: (context) => ResultsBloc()),

@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:iurc_mobile_app/pages/account/cubit/account_cubit.dart';
 import 'package:iurc_mobile_app/pages/pages.dart';
 
 part 'navigation_event.dart';
@@ -9,15 +8,15 @@ part 'navigation_state.dart';
 part 'navigation_bloc.freezed.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
-  final EventBloc _eventBloc;
+  final CalendarBloc _calendarBloc;
   final NewsBloc _newsBloc;
   final AccountCubit _accountCubit;
 
   NavigationBloc(
-      {required EventBloc eventBloc,
+      {required CalendarBloc calendarBloc,
       required NewsBloc newsBloc,
       required AccountCubit accountCubit})
-      : _eventBloc = eventBloc,
+      : _calendarBloc = calendarBloc,
         _newsBloc = newsBloc,
         _accountCubit = accountCubit,
         super(NavigationState.news()) {

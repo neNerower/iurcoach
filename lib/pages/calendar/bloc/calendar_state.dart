@@ -1,28 +1,28 @@
-part of 'event_bloc.dart';
+part of 'calendar_bloc.dart';
 
-enum EventStatus { initial, success, failure }
+enum CalendarStatus { initial, success, failure }
 
-class EventState extends Equatable {
+class CalendarState extends Equatable {
   // TODO: Add month controll
   final DateTime currentDay;
   final DateTime selectedDay;
-  final EventStatus status;
+  final CalendarStatus status;
   final Map<DateTime, Event> events;
 
-  const EventState({
+  const CalendarState({
     required this.currentDay,
     required this.selectedDay,
-    this.status = EventStatus.initial,
+    this.status = CalendarStatus.initial,
     this.events = const <DateTime, Event>{},
   });
 
-  EventState copyWith({
+  CalendarState copyWith({
     DateTime? currentDay,
     DateTime? selectedDay,
-    EventStatus? status,
+    CalendarStatus? status,
     Map<DateTime, Event>? events,
   }) {
-    return EventState(
+    return CalendarState(
       currentDay: currentDay ?? this.currentDay,
       selectedDay: selectedDay ?? this.selectedDay,
       status: status ?? this.status,
