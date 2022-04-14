@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iurc_mobile_app/conf/globals.dart';
 import 'package:iurc_mobile_app/screens/event/bloc/event_bloc.dart';
+import 'package:iurc_mobile_app/screens/screens.dart';
 import 'package:iurc_mobile_app/widgets/widgets.dart';
 
 import 'widgets/widgets.dart';
@@ -75,9 +76,18 @@ class EventScreenView extends StatelessWidget {
                                 : (event.dateTime.isBefore(DateTime.now()))
                                     ? Center(
                                         child: Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 20),
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 20),
                                           child: ElevatedButton.icon(
-                                            onPressed: () {},
+                                            onPressed: () =>
+                                                Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ResultEditScreen(
+                                                  eventId: event.id,
+                                                ),
+                                              ),
+                                            ),
                                             icon: Icon(Icons.save_as),
                                             label: Text("Записать результат"),
                                           ),
