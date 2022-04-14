@@ -22,13 +22,16 @@ class ResultCard extends StatelessWidget {
                 ?.copyWith(color: Colors.blue[900]),
           ),
           Divider(height: 20, indent: 10, endIndent: 10),
+          Padding(
+            padding: EdgeInsets.only(bottom: 10),
+            child: Text(
+              result.comment,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ),
           (result.photos.isNotEmpty)
               ? PostImage(imageUrl: result.photos[0])
               : Container(),
-          Text(
-            result.comment,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
         ],
       ),
     );

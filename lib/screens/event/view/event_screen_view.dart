@@ -79,15 +79,19 @@ class EventScreenView extends StatelessWidget {
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 20),
                                           child: ElevatedButton.icon(
-                                            onPressed: () =>
-                                                Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ResultEditScreen(
-                                                  eventId: event.id,
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ResultEditScreen(
+                                                    eventId: event.id,
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
+                                              );
+                                              // TODO: REMOVE THIS 
+                                              // ! JUST FOR DEMO
+                                              state.whenOrNull(data: (e, r, s) => context.read<EventBloc>().add(EventUpdated(e)));
+                                            },
                                             icon: Icon(Icons.save_as),
                                             label: Text("Записать результат"),
                                           ),

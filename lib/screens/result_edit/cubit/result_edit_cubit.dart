@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:iurc_mobile_app/models/models.dart';
 import 'package:iurc_mobile_app/repositories/repositories.dart';
 
@@ -11,7 +12,7 @@ class ResultEditCubit extends Cubit<ResultEditState> {
   ResultEditCubit(int eventId) : super(ResultEditState.initial(eventId));
 
   void onCommentUpdated(String comment) {
-    emit(ResultEditState(result: state.result..copyWith(comment: comment)));
+    emit(ResultEditState(result: state.result.copyWith(comment: comment)));
   }
 
   void onImageUpload(String path) {
@@ -28,7 +29,7 @@ class ResultEditCubit extends Cubit<ResultEditState> {
 
       Result result = await _resultRepository.postResult(result: state.result);
 
-      emit(state.copyWith(result: result, status: EditStatus.success));
+      emit(state.copyWith(status: EditStatus.success));
     } catch (e) {
       emit(state.copyWith(status: EditStatus.failure));
     }

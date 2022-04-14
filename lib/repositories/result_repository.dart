@@ -25,13 +25,18 @@ class ResultRepository {
       throw Exception("Result already exists !"); // TODO: Add custom exceptions
     }
 
-    var formData = FormData.fromMap({
+    // var formData = FormData.fromMap({
+    //   "eventId": "${result.eventId}",
+    //   "comment": "${result.comment}",
+    //   // "files": await result.photos.map((filePath) async => await MultipartFile.fromFile(filePath)).toList()
+    //   "file": await MultipartFile.fromFile(result.photos[0])
+    // });
+    final data = {
       "eventId": "${result.eventId}",
       "comment": "${result.comment}",
-      "files": result.photos.map((file) => MultipartFile.fromFile(file)).toList()
-    });
+    };
 
-    Response response = await _api.dio.post("/results", data: formData);
+    Response response = await _api.dio.post("/results", data: data);
 
     return Result.fromJson(response.data);
   }

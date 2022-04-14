@@ -29,7 +29,11 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   }
 
   void _onEventResultCreated(
-      EventResultCreated event, Emitter<EventState> emit) {}
+        EventResultCreated event, Emitter<EventState> emit) {
+      // emit(state.whenOrNull(
+      //     data: (e, r, s) =>
+      //         EventState.data(event: e, result: event.result, status: s))!);
+  }
 
   GoingStatus _chooseStatus(Event event) {
     if (event.dateTime.isBefore(DateTime.now())) {
