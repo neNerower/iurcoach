@@ -17,6 +17,9 @@ class HomeScreenView extends StatelessWidget {
           builder: (context, state) =>
               Text(Strings.pageTitles[state.pageIndex]),
         ),
+        // actions: [
+        //   IconButton(onPressed: () => Scaffold.of(context).openEndDrawer(), icon: icon)
+        // ],
       ),
       body: BlocBuilder<NavigationBloc, NavigationState>(
         builder: (context, state) {
@@ -33,11 +36,6 @@ class HomeScreenView extends StatelessWidget {
               return NewsPage();
           }
         },
-      ),
-      drawer: BlocBuilder<NavigationBloc, NavigationState>(
-        buildWhen: (previous, current) =>
-            current == NavigationState.account(),
-        builder: (context, state) => BurgerMenu(),
       ),
       bottomNavigationBar: BlocBuilder<NavigationBloc, NavigationState>(
         buildWhen: (previous, current) => previous != current,
