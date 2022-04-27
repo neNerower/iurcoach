@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iurc_mobile_app/pages/pages.dart';
+import 'package:iurc_mobile_app/widgets/widgets.dart';
 
-import 'results_view.dart';
+import '../results.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ResultantBloc>(
-      create: (context) => ResultantBloc()..add(ResultantEvent.fetched()),
-      child: ResultsView(),
+    return BlocBuilder<ResultantBloc, ResultantState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () => const Center(child: CircularProgressIndicator()),
+          success: (resultantEvents) {
+            if (resultantEvents.isEmpty) {
+              return const Center(child: Text('No results'));
+            }
+
+            return ListView.builder(
+              itemCount: resultantEvents.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: EventPreview(event: resultantEvents[index]),
+                );
+              },
+            );
+          },
+          failure: (message) =>
+              Center(child: Text(message ?? 'Failed to fetch results')),
+        );
+      },
     );
   }
 }
