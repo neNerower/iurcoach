@@ -36,8 +36,7 @@ class _$UserTearOff {
       required String vkID,
       required String phoneNumber,
       required String email,
-      required String photoURL,
-      required List<int> results}) {
+      required String photoURL}) {
     return _User(
       id: id,
       firstName: firstName,
@@ -53,7 +52,6 @@ class _$UserTearOff {
       phoneNumber: phoneNumber,
       email: email,
       photoURL: photoURL,
-      results: results,
     );
   }
 
@@ -81,7 +79,6 @@ mixin _$User {
   String get phoneNumber => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get photoURL => throw _privateConstructorUsedError;
-  List<int> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -106,8 +103,7 @@ abstract class $UserCopyWith<$Res> {
       String vkID,
       String phoneNumber,
       String email,
-      String photoURL,
-      List<int> results});
+      String photoURL});
 }
 
 /// @nodoc
@@ -134,7 +130,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? phoneNumber = freezed,
     Object? email = freezed,
     Object? photoURL = freezed,
-    Object? results = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -193,10 +188,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
               as String,
-      results: results == freezed
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<int>,
     ));
   }
 }
@@ -220,8 +211,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String vkID,
       String phoneNumber,
       String email,
-      String photoURL,
-      List<int> results});
+      String photoURL});
 }
 
 /// @nodoc
@@ -249,7 +239,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? email = freezed,
     Object? photoURL = freezed,
-    Object? results = freezed,
   }) {
     return _then(_User(
       id: id == freezed
@@ -308,10 +297,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
               as String,
-      results: results == freezed
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<int>,
     ));
   }
 }
@@ -333,8 +318,7 @@ class _$_User implements _User {
       required this.vkID,
       required this.phoneNumber,
       required this.email,
-      required this.photoURL,
-      required this.results});
+      required this.photoURL});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -366,12 +350,10 @@ class _$_User implements _User {
   final String email;
   @override
   final String photoURL;
-  @override
-  final List<int> results;
 
   @override
   String toString() {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, birthdate: $birthdate, weight: $weight, height: $height, team: $team, faculty: $faculty, studGroup: $studGroup, isuID: $isuID, vkID: $vkID, phoneNumber: $phoneNumber, email: $email, photoURL: $photoURL, results: $results)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, birthdate: $birthdate, weight: $weight, height: $height, team: $team, faculty: $faculty, studGroup: $studGroup, isuID: $isuID, vkID: $vkID, phoneNumber: $phoneNumber, email: $email, photoURL: $photoURL)';
   }
 
   @override
@@ -393,8 +375,7 @@ class _$_User implements _User {
             const DeepCollectionEquality()
                 .equals(other.phoneNumber, phoneNumber) &&
             const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.photoURL, photoURL) &&
-            const DeepCollectionEquality().equals(other.results, results));
+            const DeepCollectionEquality().equals(other.photoURL, photoURL));
   }
 
   @override
@@ -413,8 +394,7 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(vkID),
       const DeepCollectionEquality().hash(phoneNumber),
       const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(photoURL),
-      const DeepCollectionEquality().hash(results));
+      const DeepCollectionEquality().hash(photoURL));
 
   @JsonKey(ignore: true)
   @override
@@ -442,8 +422,7 @@ abstract class _User implements User {
       required String vkID,
       required String phoneNumber,
       required String email,
-      required String photoURL,
-      required List<int> results}) = _$_User;
+      required String photoURL}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -475,8 +454,6 @@ abstract class _User implements User {
   String get email;
   @override
   String get photoURL;
-  @override
-  List<int> get results;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

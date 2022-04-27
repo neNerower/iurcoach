@@ -21,7 +21,6 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       phoneNumber: json['phoneNumber'] as String,
       email: json['email'] as String,
       photoURL: json['photoURL'] as String,
-      results: (json['results'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -39,5 +38,4 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'phoneNumber': instance.phoneNumber,
       'email': instance.email,
       'photoURL': instance.photoURL,
-      'results': instance.results,
     };

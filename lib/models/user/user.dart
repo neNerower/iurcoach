@@ -20,7 +20,7 @@ class User with _$User{
     required String phoneNumber,
     required String email,
     required String photoURL,
-    required List<int> results,
+    // required List<int> results,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
