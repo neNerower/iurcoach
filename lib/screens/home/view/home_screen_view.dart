@@ -38,7 +38,7 @@ class HomeScreenView extends StatelessWidget {
         },
       ),
       bottomNavigationBar: BlocBuilder<NavigationBloc, NavigationState>(
-        buildWhen: (previous, current) => previous != current,
+        // buildWhen: (previous, current) => previous != current,
         builder: (context, state) {
           return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
@@ -61,9 +61,13 @@ class HomeScreenView extends StatelessWidget {
                 label: '',
               ),
             ],
-            onTap: (selectedPageIndex) => context
-                .read<NavigationBloc>()
-                .add(NavigationEvent.pageChanged(pageIndex: selectedPageIndex)),
+            onTap: (selectedPageIndex) => context.read<NavigationBloc>().add(
+                  (state.pageIndex == selectedPageIndex)
+                      ? NavigationEvent.pageRefreshed(
+                          pageIndex: selectedPageIndex)
+                      : NavigationEvent.pageChanged(
+                          pageIndex: selectedPageIndex),
+                ),
           );
         },
       ),

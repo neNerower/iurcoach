@@ -23,6 +23,12 @@ class _$NavigationEventTearOff {
       pageIndex: pageIndex,
     );
   }
+
+  NavigationPageRefreshed pageRefreshed({required int pageIndex}) {
+    return NavigationPageRefreshed(
+      pageIndex: pageIndex,
+    );
+  }
 }
 
 /// @nodoc
@@ -35,32 +41,38 @@ mixin _$NavigationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int pageIndex) pageChanged,
+    required TResult Function(int pageIndex) pageRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int pageIndex)? pageChanged,
+    TResult Function(int pageIndex)? pageRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int pageIndex)? pageChanged,
+    TResult Function(int pageIndex)? pageRefreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigationPageChanged value) pageChanged,
+    required TResult Function(NavigationPageRefreshed value) pageRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(NavigationPageChanged value)? pageChanged,
+    TResult Function(NavigationPageRefreshed value)? pageRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigationPageChanged value)? pageChanged,
+    TResult Function(NavigationPageRefreshed value)? pageRefreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -169,6 +181,7 @@ class _$NavigationPageChanged implements NavigationPageChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int pageIndex) pageChanged,
+    required TResult Function(int pageIndex) pageRefreshed,
   }) {
     return pageChanged(pageIndex);
   }
@@ -177,6 +190,7 @@ class _$NavigationPageChanged implements NavigationPageChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int pageIndex)? pageChanged,
+    TResult Function(int pageIndex)? pageRefreshed,
   }) {
     return pageChanged?.call(pageIndex);
   }
@@ -185,6 +199,7 @@ class _$NavigationPageChanged implements NavigationPageChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int pageIndex)? pageChanged,
+    TResult Function(int pageIndex)? pageRefreshed,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -197,6 +212,7 @@ class _$NavigationPageChanged implements NavigationPageChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigationPageChanged value) pageChanged,
+    required TResult Function(NavigationPageRefreshed value) pageRefreshed,
   }) {
     return pageChanged(this);
   }
@@ -205,6 +221,7 @@ class _$NavigationPageChanged implements NavigationPageChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(NavigationPageChanged value)? pageChanged,
+    TResult Function(NavigationPageRefreshed value)? pageRefreshed,
   }) {
     return pageChanged?.call(this);
   }
@@ -213,6 +230,7 @@ class _$NavigationPageChanged implements NavigationPageChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigationPageChanged value)? pageChanged,
+    TResult Function(NavigationPageRefreshed value)? pageRefreshed,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -231,5 +249,145 @@ abstract class NavigationPageChanged implements NavigationEvent {
   @override
   @JsonKey(ignore: true)
   $NavigationPageChangedCopyWith<NavigationPageChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NavigationPageRefreshedCopyWith<$Res>
+    implements $NavigationEventCopyWith<$Res> {
+  factory $NavigationPageRefreshedCopyWith(NavigationPageRefreshed value,
+          $Res Function(NavigationPageRefreshed) then) =
+      _$NavigationPageRefreshedCopyWithImpl<$Res>;
+  @override
+  $Res call({int pageIndex});
+}
+
+/// @nodoc
+class _$NavigationPageRefreshedCopyWithImpl<$Res>
+    extends _$NavigationEventCopyWithImpl<$Res>
+    implements $NavigationPageRefreshedCopyWith<$Res> {
+  _$NavigationPageRefreshedCopyWithImpl(NavigationPageRefreshed _value,
+      $Res Function(NavigationPageRefreshed) _then)
+      : super(_value, (v) => _then(v as NavigationPageRefreshed));
+
+  @override
+  NavigationPageRefreshed get _value => super._value as NavigationPageRefreshed;
+
+  @override
+  $Res call({
+    Object? pageIndex = freezed,
+  }) {
+    return _then(NavigationPageRefreshed(
+      pageIndex: pageIndex == freezed
+          ? _value.pageIndex
+          : pageIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NavigationPageRefreshed implements NavigationPageRefreshed {
+  const _$NavigationPageRefreshed({required this.pageIndex});
+
+  @override
+  final int pageIndex;
+
+  @override
+  String toString() {
+    return 'NavigationEvent.pageRefreshed(pageIndex: $pageIndex)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is NavigationPageRefreshed &&
+            const DeepCollectionEquality().equals(other.pageIndex, pageIndex));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pageIndex));
+
+  @JsonKey(ignore: true)
+  @override
+  $NavigationPageRefreshedCopyWith<NavigationPageRefreshed> get copyWith =>
+      _$NavigationPageRefreshedCopyWithImpl<NavigationPageRefreshed>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int pageIndex) pageChanged,
+    required TResult Function(int pageIndex) pageRefreshed,
+  }) {
+    return pageRefreshed(pageIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int pageIndex)? pageChanged,
+    TResult Function(int pageIndex)? pageRefreshed,
+  }) {
+    return pageRefreshed?.call(pageIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int pageIndex)? pageChanged,
+    TResult Function(int pageIndex)? pageRefreshed,
+    required TResult orElse(),
+  }) {
+    if (pageRefreshed != null) {
+      return pageRefreshed(pageIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NavigationPageChanged value) pageChanged,
+    required TResult Function(NavigationPageRefreshed value) pageRefreshed,
+  }) {
+    return pageRefreshed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NavigationPageChanged value)? pageChanged,
+    TResult Function(NavigationPageRefreshed value)? pageRefreshed,
+  }) {
+    return pageRefreshed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NavigationPageChanged value)? pageChanged,
+    TResult Function(NavigationPageRefreshed value)? pageRefreshed,
+    required TResult orElse(),
+  }) {
+    if (pageRefreshed != null) {
+      return pageRefreshed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NavigationPageRefreshed implements NavigationEvent {
+  const factory NavigationPageRefreshed({required int pageIndex}) =
+      _$NavigationPageRefreshed;
+
+  @override
+  int get pageIndex;
+  @override
+  @JsonKey(ignore: true)
+  $NavigationPageRefreshedCopyWith<NavigationPageRefreshed> get copyWith =>
       throw _privateConstructorUsedError;
 }
