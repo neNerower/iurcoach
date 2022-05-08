@@ -11,11 +11,13 @@ class AccountCubit extends Cubit<AccountState> {
   AccountCubit() : super(AccountState.initial());
 
   void fetchAccountData() async {
+    emit(AccountState.initial());
+
     try {
       final user = await _userRepository.fetchAccountUser();
       emit(AccountState.data(user: user));
-    } catch (_) {
-      emit(AccountState.failure());
+    } catch (e) {
+      emit(AccountState.failure(message: e.toString()));
     }
   }
 }
