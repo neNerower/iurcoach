@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iurc_mobile_app/bloc/bloc.dart';
 import 'package:iurc_mobile_app/widgets/widgets.dart';
-
-import '../results.dart';
 
 class ResultsPage extends StatelessWidget {
   @override

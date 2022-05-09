@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:iurc_mobile_app/pages/pages.dart';
+import 'package:iurc_mobile_app/bloc/bloc.dart';
 
 part 'navigation_event.dart';
 part 'navigation_state.dart';

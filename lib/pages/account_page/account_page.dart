@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iurc_mobile_app/authentication/authentication.dart';
+import 'package:iurc_mobile_app/bloc/bloc.dart';
 import 'package:iurc_mobile_app/conf/globals.dart';
 import 'package:iurc_mobile_app/models/models.dart';
 import 'package:iurc_mobile_app/widgets/widgets.dart';
-
-import '../cubit/account_cubit.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({Key? key}) : super(key: key);
