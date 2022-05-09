@@ -21,10 +21,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final PostRepository _postRepository = PostRepository();
 
   NewsBloc() : super(NewsState()) {
+    on<NewsRefreshed>(_onNewsRefreshed);
     on<NewsFetched>(
       _onNewsFetched,
       // transformer: throttleDroppable(throttleDuration),
     );
+  }
+
+  Future<void> _onNewsRefreshed(
+      NewsRefreshed event, Emitter<NewsState> emit) async {
+    emit(state.copyWith(status: NewsStatus.initial));
+    this.add(NewsFetched());
   }
 
   Future<void> _onNewsFetched(

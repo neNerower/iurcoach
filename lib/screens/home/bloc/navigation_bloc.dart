@@ -65,7 +65,7 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
         _resultantBloc.add(ResultantEvent.fetched());
         return emit(NavigationState.results());
       case 2:
-        _newsBloc.add(NewsFetched());
+        _newsBloc.add(NewsRefreshed());
         return emit(NavigationState.news());
       case 3:
         _accountCubit.fetchAccountData();

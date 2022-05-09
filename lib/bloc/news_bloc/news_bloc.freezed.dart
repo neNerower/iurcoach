@@ -18,6 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NewsEventTearOff {
   const _$NewsEventTearOff();
 
+  NewsRefreshed refresh() {
+    return const NewsRefreshed();
+  }
+
   NewsFetched fetched() {
     return const NewsFetched();
   }
@@ -30,32 +34,38 @@ const $NewsEvent = _$NewsEventTearOff();
 mixin _$NewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() refresh,
     required TResult Function() fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refresh,
     TResult Function()? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refresh,
     TResult Function()? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NewsRefreshed value) refresh,
     required TResult Function(NewsFetched value) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NewsRefreshed value)? refresh,
     TResult Function(NewsFetched value)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NewsRefreshed value)? refresh,
     TResult Function(NewsFetched value)? fetched,
     required TResult orElse(),
   }) =>
@@ -75,6 +85,110 @@ class _$NewsEventCopyWithImpl<$Res> implements $NewsEventCopyWith<$Res> {
   final NewsEvent _value;
   // ignore: unused_field
   final $Res Function(NewsEvent) _then;
+}
+
+/// @nodoc
+abstract class $NewsRefreshedCopyWith<$Res> {
+  factory $NewsRefreshedCopyWith(
+          NewsRefreshed value, $Res Function(NewsRefreshed) then) =
+      _$NewsRefreshedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NewsRefreshedCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res>
+    implements $NewsRefreshedCopyWith<$Res> {
+  _$NewsRefreshedCopyWithImpl(
+      NewsRefreshed _value, $Res Function(NewsRefreshed) _then)
+      : super(_value, (v) => _then(v as NewsRefreshed));
+
+  @override
+  NewsRefreshed get _value => super._value as NewsRefreshed;
+}
+
+/// @nodoc
+
+class _$NewsRefreshed implements NewsRefreshed {
+  const _$NewsRefreshed();
+
+  @override
+  String toString() {
+    return 'NewsEvent.refresh()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is NewsRefreshed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() refresh,
+    required TResult Function() fetched,
+  }) {
+    return refresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refresh,
+    TResult Function()? fetched,
+  }) {
+    return refresh?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refresh,
+    TResult Function()? fetched,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NewsRefreshed value) refresh,
+    required TResult Function(NewsFetched value) fetched,
+  }) {
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NewsRefreshed value)? refresh,
+    TResult Function(NewsFetched value)? fetched,
+  }) {
+    return refresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NewsRefreshed value)? refresh,
+    TResult Function(NewsFetched value)? fetched,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewsRefreshed implements NewsEvent {
+  const factory NewsRefreshed() = _$NewsRefreshed;
 }
 
 /// @nodoc
@@ -117,6 +231,7 @@ class _$NewsFetched implements NewsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() refresh,
     required TResult Function() fetched,
   }) {
     return fetched();
@@ -125,6 +240,7 @@ class _$NewsFetched implements NewsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refresh,
     TResult Function()? fetched,
   }) {
     return fetched?.call();
@@ -133,6 +249,7 @@ class _$NewsFetched implements NewsFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refresh,
     TResult Function()? fetched,
     required TResult orElse(),
   }) {
@@ -145,6 +262,7 @@ class _$NewsFetched implements NewsFetched {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NewsRefreshed value) refresh,
     required TResult Function(NewsFetched value) fetched,
   }) {
     return fetched(this);
@@ -153,6 +271,7 @@ class _$NewsFetched implements NewsFetched {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NewsRefreshed value)? refresh,
     TResult Function(NewsFetched value)? fetched,
   }) {
     return fetched?.call(this);
@@ -161,6 +280,7 @@ class _$NewsFetched implements NewsFetched {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NewsRefreshed value)? refresh,
     TResult Function(NewsFetched value)? fetched,
     required TResult orElse(),
   }) {
