@@ -9,17 +9,17 @@ part 'navigation_bloc.freezed.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
   final CalendarBloc _calendarBloc;
-  final ResultantBloc _resultantBloc;
+  final ResultsBloc _resultsBloc;
   final NewsBloc _newsBloc;
   final AccountCubit _accountCubit;
 
   NavigationBloc(
       {required CalendarBloc calendarBloc,
-      required ResultantBloc resultantBloc,
+      required ResultsBloc resultsBloc,
       required NewsBloc newsBloc,
       required AccountCubit accountCubit})
       : _calendarBloc = calendarBloc,
-        _resultantBloc = resultantBloc,
+        _resultsBloc = resultsBloc,
         _newsBloc = newsBloc..add(NewsFetched()),
         _accountCubit = accountCubit,
         super(NavigationState.news()) {
@@ -37,7 +37,7 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
         return emit(NavigationState.calendar());
 
       case 1:
-        if (_resultantBloc.state == ResultantState.initial()) {
+        if (_resultsBloc.state == ResultsState.initial()) {
           return this.add(NavigationPageRefreshed(pageIndex: 1));
         }
         return emit(NavigationState.results());
@@ -62,7 +62,7 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
         _calendarBloc.add(CalendarEventsFetched(DateTime.now()));
         return emit(NavigationState.calendar());
       case 1:
-        _resultantBloc.add(ResultantEvent.fetched());
+        _resultsBloc.add(ResultsEvent.fetched());
         return emit(NavigationState.results());
       case 2:
         _newsBloc.add(NewsRefreshed());

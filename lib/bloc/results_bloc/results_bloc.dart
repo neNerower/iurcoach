@@ -3,20 +3,20 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:iurc_mobile_app/models/models.dart';
 import 'package:iurc_mobile_app/repositories/repositories.dart';
 
-part 'resultant_event.dart';
-part 'resultant_state.dart';
-part 'resultant_bloc.freezed.dart';
+part 'results_event.dart';
+part 'results_state.dart';
+part 'results_bloc.freezed.dart';
 
-class ResultantBloc extends Bloc<ResultantEvent, ResultantState> {
+class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
   final ResultRepository _resultRepository = ResultRepository();
   final EventRepository _eventRepository = EventRepository();
 
 
-  ResultantBloc() : super(ResultantState.initial()) {
-    on<ResultantFetched>(_onResultantFetched);
+  ResultsBloc() : super(ResultsState.initial()) {
+    on<ResultsFetched>(_onResultsFetched);
   }
 
-  void _onResultantFetched(ResultantFetched event, Emitter<ResultantState> emit) async {
+  void _onResultsFetched(ResultsFetched event, Emitter<ResultsState> emit) async {
     try {
       final results = await _resultRepository.fetchResults();
 
@@ -28,9 +28,9 @@ class ResultantBloc extends Bloc<ResultantEvent, ResultantState> {
         resultantEvents.add(event);
       }
       
-      return emit(ResultantState.success(resultantEvents: resultantEvents));
+      return emit(ResultsState.success(resultantEvents: resultantEvents));
     } on Exception catch (e) {
-      emit(ResultantState.failure(message: e.toString()));
+      emit(ResultsState.failure(message: e.toString()));
     }
   }
 }

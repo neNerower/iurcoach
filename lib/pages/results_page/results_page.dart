@@ -6,7 +6,7 @@ import 'package:iurc_mobile_app/widgets/widgets.dart';
 class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ResultantBloc, ResultantState>(
+    return BlocBuilder<ResultsBloc, ResultsState>(
       builder: (context, state) {
         return state.when(
           initial: () => const Center(child: CircularProgressIndicator()),
