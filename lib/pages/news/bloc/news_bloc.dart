@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:iurc_mobile_app/models/models.dart';
 import 'package:iurc_mobile_app/repositories/repositories.dart';
 
 part 'news_event.dart';
 part 'news_state.dart';
+part 'news_bloc.freezed.dart';
 
 // const _postLimit = 20;
 // const throttleDuration = Duration(milliseconds: 100);
