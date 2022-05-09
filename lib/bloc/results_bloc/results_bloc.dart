@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:iurc_mobile_app/models/models.dart';
 import 'package:iurc_mobile_app/repositories/repositories.dart';
@@ -13,7 +14,13 @@ class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
 
 
   ResultsBloc() : super(ResultsState.initial()) {
+    on<ResultsRefreshed>(_onResultsRefreshed);
     on<ResultsFetched>(_onResultsFetched);
+  }
+
+  _onResultsRefreshed(ResultsRefreshed event, Emitter<ResultsState> emit) async {
+    emit(ResultsState.initial());
+    this.add(ResultsFetched());
   }
 
   void _onResultsFetched(ResultsFetched event, Emitter<ResultsState> emit) async {

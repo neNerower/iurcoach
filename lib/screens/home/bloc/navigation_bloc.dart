@@ -62,7 +62,7 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
         _eventsBloc.add(EventsRefreshed());
         return emit(NavigationState.calendar());
       case 1:
-        _resultsBloc.add(ResultsEvent.fetched());
+        _resultsBloc.add(ResultsEvent.refreshed());
         return emit(NavigationState.results());
       case 2:
         _newsBloc.add(NewsRefreshed());

@@ -18,6 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ResultsEventTearOff {
   const _$ResultsEventTearOff();
 
+  ResultsRefreshed refreshed() {
+    return const ResultsRefreshed();
+  }
+
   ResultsFetched fetched() {
     return const ResultsFetched();
   }
@@ -30,32 +34,38 @@ const $ResultsEvent = _$ResultsEventTearOff();
 mixin _$ResultsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() refreshed,
     required TResult Function() fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refreshed,
     TResult Function()? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refreshed,
     TResult Function()? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ResultsRefreshed value) refreshed,
     required TResult Function(ResultsFetched value) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ResultsRefreshed value)? refreshed,
     TResult Function(ResultsFetched value)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ResultsRefreshed value)? refreshed,
     TResult Function(ResultsFetched value)? fetched,
     required TResult orElse(),
   }) =>
@@ -79,6 +89,119 @@ class _$ResultsEventCopyWithImpl<$Res> implements $ResultsEventCopyWith<$Res> {
 }
 
 /// @nodoc
+abstract class $ResultsRefreshedCopyWith<$Res> {
+  factory $ResultsRefreshedCopyWith(
+          ResultsRefreshed value, $Res Function(ResultsRefreshed) then) =
+      _$ResultsRefreshedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ResultsRefreshedCopyWithImpl<$Res>
+    extends _$ResultsEventCopyWithImpl<$Res>
+    implements $ResultsRefreshedCopyWith<$Res> {
+  _$ResultsRefreshedCopyWithImpl(
+      ResultsRefreshed _value, $Res Function(ResultsRefreshed) _then)
+      : super(_value, (v) => _then(v as ResultsRefreshed));
+
+  @override
+  ResultsRefreshed get _value => super._value as ResultsRefreshed;
+}
+
+/// @nodoc
+
+class _$ResultsRefreshed
+    with DiagnosticableTreeMixin
+    implements ResultsRefreshed {
+  const _$ResultsRefreshed();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultsEvent.refreshed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ResultsEvent.refreshed'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ResultsRefreshed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() refreshed,
+    required TResult Function() fetched,
+  }) {
+    return refreshed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refreshed,
+    TResult Function()? fetched,
+  }) {
+    return refreshed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refreshed,
+    TResult Function()? fetched,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ResultsRefreshed value) refreshed,
+    required TResult Function(ResultsFetched value) fetched,
+  }) {
+    return refreshed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ResultsRefreshed value)? refreshed,
+    TResult Function(ResultsFetched value)? fetched,
+  }) {
+    return refreshed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ResultsRefreshed value)? refreshed,
+    TResult Function(ResultsFetched value)? fetched,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ResultsRefreshed implements ResultsEvent {
+  const factory ResultsRefreshed() = _$ResultsRefreshed;
+}
+
+/// @nodoc
 abstract class $ResultsFetchedCopyWith<$Res> {
   factory $ResultsFetchedCopyWith(
           ResultsFetched value, $Res Function(ResultsFetched) then) =
@@ -99,12 +222,18 @@ class _$ResultsFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ResultsFetched implements ResultsFetched {
+class _$ResultsFetched with DiagnosticableTreeMixin implements ResultsFetched {
   const _$ResultsFetched();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResultsEvent.fetched()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ResultsEvent.fetched'));
   }
 
   @override
@@ -119,6 +248,7 @@ class _$ResultsFetched implements ResultsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() refreshed,
     required TResult Function() fetched,
   }) {
     return fetched();
@@ -127,6 +257,7 @@ class _$ResultsFetched implements ResultsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refreshed,
     TResult Function()? fetched,
   }) {
     return fetched?.call();
@@ -135,6 +266,7 @@ class _$ResultsFetched implements ResultsFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refreshed,
     TResult Function()? fetched,
     required TResult orElse(),
   }) {
@@ -147,6 +279,7 @@ class _$ResultsFetched implements ResultsFetched {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ResultsRefreshed value) refreshed,
     required TResult Function(ResultsFetched value) fetched,
   }) {
     return fetched(this);
@@ -155,6 +288,7 @@ class _$ResultsFetched implements ResultsFetched {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ResultsRefreshed value)? refreshed,
     TResult Function(ResultsFetched value)? fetched,
   }) {
     return fetched?.call(this);
@@ -163,6 +297,7 @@ class _$ResultsFetched implements ResultsFetched {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ResultsRefreshed value)? refreshed,
     TResult Function(ResultsFetched value)? fetched,
     required TResult orElse(),
   }) {
@@ -286,12 +421,20 @@ class __$ResultsInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ResultsInitial implements _ResultsInitial {
+class _$_ResultsInitial
+    with DiagnosticableTreeMixin
+    implements _ResultsInitial {
   const _$_ResultsInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResultsState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ResultsState.initial'));
   }
 
   @override
@@ -410,15 +553,25 @@ class __$ResultsSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ResultsSuccess implements _ResultsSuccess {
+class _$_ResultsSuccess
+    with DiagnosticableTreeMixin
+    implements _ResultsSuccess {
   const _$_ResultsSuccess({required this.resultantEvents});
 
   @override
   final List<Event> resultantEvents;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResultsState.success(resultantEvents: $resultantEvents)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultsState.success'))
+      ..add(DiagnosticsProperty('resultantEvents', resultantEvents));
   }
 
   @override
@@ -552,15 +705,25 @@ class __$ResultsFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ResultsFailure implements _ResultsFailure {
+class _$_ResultsFailure
+    with DiagnosticableTreeMixin
+    implements _ResultsFailure {
   const _$_ResultsFailure({this.message});
 
   @override
   final String? message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResultsState.failure(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultsState.failure'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
