@@ -18,7 +18,11 @@ class LoginView extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         body: Container(
           decoration: BoxDecoration(
-            color: Colors.blue[900],
+            // color: Colors.blue[900],
+            image: DecorationImage(
+              image: AssetImage("assets/images/login_background.png"),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Padding(
             padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
@@ -41,7 +45,7 @@ class LoginView extends StatelessWidget {
                               return Text("Some error");
                             case LoginStatus.submissionInProgress:
                               return CircularProgressIndicator();
-    
+
                             default:
                               return Container();
                           }
